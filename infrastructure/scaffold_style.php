@@ -26,6 +26,7 @@
             padding: 0px;
             box-sizing: border-box;
             font-family: 'Ubuntu';
+            color: dimgray;
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 100;
@@ -33,9 +34,12 @@
         }
          a {
             text-decoration: none;
+            color: unset;
         }
         /* Flexbox */
-        .flex { display: flex; }
+        .flex { display: flex; flex-wrap: wrap; }
+        .flex-row { flex-direction: row; }
+        .flex-column { flex-direction: column; }
         .justify-center { justify-content: center; }
         .justify-between { justify-content: space-between; }
         .align-center { align-content: center; }
