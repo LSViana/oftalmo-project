@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
-    require_once __DIR__ . "/" . "../infrastructure/request_data.php.php";
+    require_once __DIR__ . "/" . "../infrastructure/request_data.php";
     // Routes
     $routes = [
         "index" => BASE_URL . "index.php",
