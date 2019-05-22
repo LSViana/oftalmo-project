@@ -5,7 +5,7 @@
     $isGet = $method == "GET";
     $isPost = $method == "POST";
     //
-    function isAuthenticated() {
+    function is_authenticated() {
         return isset($_SESSION[USER_KEY]);
     }
 ?>

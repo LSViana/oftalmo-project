@@ -5,20 +5,15 @@
     require_once "infrastructure/request_data.php";
     // Only for logged in people
     $redirect = false;
-    if($isGet && !isAuthenticated()) {
+    if($isGet) {
         $redirect = true;
-        header("Location: ./pages/login.php");
+        if(is_authenticated())
+            header("Location: ./pages/home.php");
+        else
+            header("Location: ./pages/login.php");
     }
     //
     if(!$redirect) {
-?><html>
-    <head>
-        <title>
-            Bem-vindos ao <?php echo APP_NAME; ?>
-        </title>
-        <?php scaffold_style() ?>
-    </head>
-    <body>
-        <?php require_component("header") ?>
-    </body>
-</html><?php } ?>
+        http_response_code(400);
+    }
+?>

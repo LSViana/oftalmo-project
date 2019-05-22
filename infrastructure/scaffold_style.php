@@ -2,7 +2,7 @@
     require_once "constants.php";
     // Definitions
     $baseSize = "4px";
-    $iterations = 6;
+    $iterations = 12;
     // Style  scaffold    
     function scaffold_style() {
         global $baseSize;
@@ -43,6 +43,8 @@
         .justify-center { justify-content: center; }
         .justify-between { justify-content: space-between; }
         .align-center { align-content: center; }
+        .align-start { align-content: start; }
+        .text-center {text-align: center;}
         /* Layout box */
         <?php
         for($i = 1; $i <= $iterations; $i++) {
@@ -52,6 +54,18 @@
         .mx-<?php echo $i ?> {
             margin-left: calc(var(--base-size) * <?php echo $i ?>);
             margin-right: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .mt-<?php echo $i ?> {
+            margin-top: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .mb-<?php echo $i ?> {
+            margin-bottom: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .mr-<?php echo $i ?> {
+            margin-right: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .ml-<?php echo $i ?> {
+            margin-left: calc(var(--base-size) * <?php echo $i ?>);
         }
         .my-<?php echo $i ?> {
             margin-top: calc(var(--base-size) * <?php echo $i ?>);
