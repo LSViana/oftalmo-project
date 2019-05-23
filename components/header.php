@@ -36,7 +36,7 @@
                     <p>Index</p>
                 </a>
                 <?php
-                if(isAuthenticated()) {
+                if(is_authenticated()) {
                 ?><a href="<?php echo $routes['logout'] ?>" class="px-4 flex align-center">
                     <p>Logout</p>
                 </a><?php
