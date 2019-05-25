@@ -9,17 +9,10 @@
     } else {
         $errors = [];
         //
-        $id = $_POST["id"] ?? null;
         $name = $_POST["name"] ?? "";
         $color = $_POST["color"] ?? "";
         $logo = $_POST["logo"] ?? "";
         $description = $_POST["description"] ?? "";
-        $remove = isset($_POST["remove"]);
-        // Blocking validation (it is, if there's no Id, there's no entity to validate errors)
-        if($id == null) {
-            header("Location: ../../pages/notfound.php");
-            return;
-        }
         // Validations
         if(strlen($name) < 3) {
             $errors["name"] = "Nome deve ter mais do que 3 caracteres";
@@ -35,23 +28,20 @@
         }
         // Verify errors
         if(sizeof($errors) > 0) {
-            header("Location: ../../pages/software/details.php?id=" . $id . "&errors=" . json_encode($errors) . "");
+            header("Location: ../../pages/software/create.php?id=" . $id . "&errors=" . json_encode($errors) . "");
             return;
         }
         // Handle the feature
-        if($remove) {
-            softwares_delete($id);
-            header("Location: $BASE_URL/pages/home.php");
-        }
         else {
-            softwares_update($id, [
+            // The result of the method "softwares_create" is the ID of the newly generated software
+            softwares_create([
                 "name" => $name,
                 "color" => $color,
                 "logo" => $logo,
                 "description" => $description,
             ]);
             //
-            header("Location: $BASE_URL/pages/software/details.php?id=" . $id . "&success");
+            header("Location: $BASE_URL/pages/home.php");
         }
     }
 ?>

@@ -83,7 +83,14 @@
             </section>
             <hr />
             <section class="softwares pa-5">
-                <h2>Softwares</h2>
+                <div class="flex align-center">
+                    <h2>Softwares</h2>
+                    <a href="./software/create.php">
+                        <button class="action-button primary ml-3">
+                            Adicionar
+                        </button>
+                    </a>
+                </div>
                 <section class="softwares-list my-2 py-1 flex flex-nowrap overflow-x-auto">
                     <?php
                         foreach($softwares as $software) {

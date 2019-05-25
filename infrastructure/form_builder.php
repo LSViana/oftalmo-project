@@ -25,6 +25,7 @@
                         <textarea
                             name="<?php echo $field["name"] ?>"
                             id="<?php echo $field["name"] ?>"
+                            placeholder="<?php echo $field["placeholder"] ?>"
                             cols="30"
                             rows="5"><?php echo $model[$field["name"]] ?? "" ?></textarea>
                     <?php
@@ -34,6 +35,7 @@
                         type="<?php echo $field["type"] ?>"
                         name="<?php echo $field["name"] ?>"
                         id="<?php echo $field["name"] ?>"
+                        placeholder="<?php echo $field["placeholder"] ?>"
                         value="<?php echo $model[$field["name"]] ?? "" ?>">
                     <?php
                     }
@@ -57,7 +59,7 @@
                 foreach($buttons as $button) {
                 ?>
                     <button
-                        <?php if(isset($button["value"])) echo "value=\"" . $button["value"] . "\"" ?>
+                        <?php if(isset($button["name"])) echo "name=\"" . $button["name"] . "\"" ?>
                         class="mt-3 mr-1 <?php echo $button["classes"] ?? "" ?>">
                         <?php echo $button["text"] ?>
                     </button>

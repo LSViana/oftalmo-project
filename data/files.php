@@ -99,4 +99,27 @@
             return null;
         }
     }
+    //
+    function create_item_collection($name, $object) {
+        $collectionFolder = COLLECTIONS_FOLDER . "/" . $name;
+        ensure_collection_folder($collectionFolder);
+        // Creating a new ID
+        $id = com_create_guid();
+        $file = $collectionFolder . "/" . $id . ITEM_EXTENSION;
+        // Create new IDs until there's no entry with the same ID
+        while(file_exists($file)) {
+            $id = com_create_guid();
+            $file = $collectionFolder . "/" . $id . ITEM_EXTENSION;
+        }
+        // Remove any possible ID supplied
+        unset($object["id"]);
+        //
+        $json = json_encode($object);
+        // 'x' means a new file will be created for writing only
+        $fileHandler = fopen($file, "x");
+        fwrite($fileHandler, $json);
+        fclose($fileHandler);
+        //
+        return $id;
+    }
 ?>

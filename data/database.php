@@ -21,4 +21,7 @@
     function db_delete($name, $id) {
         return delete_item_collection($name, $id);
     }
+    function db_create($name, $object) {
+        return create_item_collection($name, $object);
+    }
 ?>

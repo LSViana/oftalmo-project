@@ -7,12 +7,9 @@
     require_once __DIR__ . "/" . "../../data/softwares.php";
     //
     $allowedToRender = false;
-    $softwareId = $_GET["id"] ?? null;
-    $errors = json_decode($_GET["errors"] ?? "[]", true);
-    $success = isset($_GET["success"]);
     $authenticated = session_is_authenticated();
-    if($authenticated && $softwareId != null) {
-        $software = softwares_read($softwareId);
+    $success = $_GET["success"] ?? false;
+    if($authenticated) {
         $allowedToRender = true;
     }
     if(!$allowedToRender) {
@@ -27,7 +24,7 @@
 ?>
 <html>
     <head>
-        <title>Detalhes do Software | <?php echo APP_NAME ?></title>
+        <title>Criar Novo Software | <?php echo APP_NAME ?></title>
         <?php scaffold_style() ?>
         <style>
         </style>
@@ -37,11 +34,11 @@
         <section class="software flex flex-column align-center justify-center" style="flex: 1;">
             <?php
                 form_build(
-                    $software,
-                    $errors,
+                    null,
+                    null,
                     $success,
                     true,
-                    "../../api/softwares/update.php",
+                    "../../api/softwares/create.php",
                     "post",
                     "flex flex-column",
                     "",
@@ -74,12 +71,7 @@
                     ],
                     [
                         [
-                            "text" => "Remover",
-                            "name" => "remove",
-                            "classes" => "remove",
-                        ],
-                        [
-                            "text" => "Atualizar",
+                            "text" => "Criar",
                             "classes" => "primary",
                         ],
                     ]);
