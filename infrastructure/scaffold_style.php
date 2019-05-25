@@ -7,6 +7,15 @@
     function scaffold_style() {
         global $baseSize;
         global $iterations;
+        global $BASE_URL;
+        //
+        $useCached = false;
+        if($useCached) {
+        ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/assets/general.css">
+        <?php
+        }
+        else {
     ?><style>
         @import url('https://fonts.googleapis.com/css?family=Raleway|Ubuntu&display=swap');
         /* Variables */
@@ -28,8 +37,13 @@
             font-family: 'Ubuntu';
             color: white;
         }
-        body {
+        html {
+            min-width: 100vw;
             min-height: 100vh;
+        }
+        body {
+            width: 100%;
+            height: 100%;
             background-color: var(--dark-light-color);
         }
         h1, h2, h3, h4, h5, h6 {
@@ -44,8 +58,23 @@
         .bg-dark {
             background-color: var(--dark-color);
         }
+        .overflow-x-auto {
+            overflow-x: auto;
+        }
+        ul {
+            list-style: none;
+        }
+        .border-radius-circular {
+            border-radius: 1e10px;
+        }
+        .thumb-image {
+            height: 32px;
+            width: 32px;
+        }
         /* Flexbox */
         .flex { display: flex; flex-wrap: wrap; }
+        .flex > * { flex-shrink: 0; } 
+        .flex-nowrap { flex-wrap: nowrap; }
         .flex-row { flex-direction: row; }
         .flex-column { flex-direction: column; }
         .justify-center { justify-content: center; }
@@ -59,7 +88,11 @@
         .text-primary-dark { color: var(--primary-dark-color); }
         .text-accent { color: var(--accent-color); }
         .text-center { text-align: center; }
-        .text-title { font-family: 'Raleway'; }
+        .text-justified { text-align: justify; }
+        .text-font-title { font-family: 'Raleway'; }
+        .text-font-body { font-family: 'Ubuntu'; }
+        .text-weight-light { font-weight: lighter; }
+        .text-weight-bold { font-weight: bold; }
         /* Forms */
         .data-form p input {
             border: none;
@@ -78,7 +111,7 @@
             border-bottom-width: 2px;
             color: var(--primary-color);
         }
-        .data-form button {
+        .data-form button, .action-button {
             cursor: pointer;
             background: transparent;
             padding: calc(var(--base-size) * 2);
@@ -89,15 +122,15 @@
             border-radius: calc(var(--base-size) * 1000);
             padding: calc(var(--base-size) * 2) calc(var(--base-size) * 4);
         }
-        .data-form button:hover {
+        .data-form button:hover, .action-button:hover {
             background-color: white;
             color: var(--dark-color);
         }
-        .data-form button.primary {
+        .data-form button.primary, .action-button.primary {
             color: var(--primary-color);
             border-color: var(--primary-color);
         }
-        .data-form button.primary:hover {
+        .data-form button.primary:hover, .action-button.primary:hover {
             color: var(--dark-color);
             background-color: var(--primary-color);
         }
@@ -131,6 +164,18 @@
         .pa-<?php echo $i ?> {
             padding: calc(var(--base-size) * <?php echo $i ?>);
         }
+        .pt-<?php echo $i ?> {
+            padding-top: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .pl-<?php echo $i ?> {
+            padding-left: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .pb-<?php echo $i ?> {
+            padding-bottom: calc(var(--base-size) * <?php echo $i ?>);
+        }
+        .pr-<?php echo $i ?> {
+            padding-right: calc(var(--base-size) * <?php echo $i ?>);
+        }
         .px-<?php echo $i ?> {
             padding-left: calc(var(--base-size) * <?php echo $i ?>);
             padding-right: calc(var(--base-size) * <?php echo $i ?>);
@@ -147,4 +192,6 @@
             border-radius: <?php echo $i * 2 ?>px;
         }
         <?php } ?>
-    </style><?php } ?>
+    </style><?php }
+    }
+?>

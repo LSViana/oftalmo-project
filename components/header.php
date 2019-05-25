@@ -29,21 +29,21 @@
             }
         </style>
         <nav class="header flex justify-between align-stretch elevation-4">
-            <h1 class="ma-3">
+            <h1 class="ma-5">
                 <?php echo APP_NAME; ?>
             </h1>
-            <section class="pages flex">
+            <section class="pages flex pr-5">
                 <a href="<?php echo $routes['index'] ?>" class="px-4 flex align-center">
-                    <h4 class="text-title">HOME</h4>
+                    <h4 class="text-font-title">HOME</h4>
                 </a>
                 <?php
                 if(session_is_authenticated()) {
                 ?><a href="<?php echo $routes['logout'] ?>" class="px-4 flex align-center">
-                    <h4 class="text-title">LOGOUT</h4>
+                    <h4 class="text-font-title">LOGOUT</h4>
                 </a><?php
                 } else {
                 ?><a href="<?php echo $routes['login'] ?>" class="px-4 flex align-center">
-                    <h4 class="text-title">LOGIN</h4>
+                    <h4 class="text-font-title">LOGIN</h4>
                 </a><?php
                 } ?>
             </section>

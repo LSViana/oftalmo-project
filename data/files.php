@@ -50,6 +50,24 @@
         return $itemExists !== false; // False (as boolean) only if the file isn't found
     }
     //
+    function read_item_collection($name, $id) {
+        $collectionFolder = COLLECTIONS_FOLDER . "/" . $name;
+        ensure_collection_folder($collectionFolder);
+        //
+        $file = $collectionFolder . "/" . $id . ITEM_EXTENSION;
+        if(file_exists($file)) {
+            $fileHandler = fopen($file, "r");
+            $json = fread($fileHandler, filesize($file));
+            fclose($fileHandler);
+            //
+            $item = json_decode($json);
+            $item["id"] = pathinfo($file, PATHINFO_FILENAME);
+            return $item;
+        } else {
+            return null;
+        }
+    }
+    //
     function update_item_collection($name, $id, $object) {
 
     }
