@@ -18,4 +18,7 @@
     function db_exists($name, $id) {
         return exists_item_collection($name, $id);
     }
+    function db_delete($name, $id) {
+        return delete_item_collection($name, $id);
+    }
 ?>

@@ -20,6 +20,7 @@
             --primary-color: #42bff4;
             --primary-dark-color: #38a3d1;
             --accent-color: #f4ee41;
+            --error-color: #f47d42;
             /* Dimensions */
             --base-size: <?php echo $baseSize ?>;
         }
@@ -36,6 +37,9 @@
             min-height: 100vh;
         }
         body {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
             width: 100%;
             height: 100%;
             background-color: var(--dark-light-color);
@@ -88,22 +92,26 @@
         .text-weight-light { font-weight: lighter; }
         .text-weight-bold { font-weight: bold; }
         /* Forms */
-        .data-form p input {
+        .data-form p input, .data-form p textarea {
             border: none;
             padding: calc(var(--base-size) * 2);
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid white;
             background: transparent;
             transition: border-bottom-color .3s, color .3s;
             font-size: 1.25em;
         }
-        .data-form p input:hover {
+        .data-form p input:hover, .data-form p textarea:hover {
             border-bottom-color: var(--primary-color);
             color: var(--primary-color);
         }
-        .data-form p input:focus {
+        .data-form p input:focus, .data-form p textarea:focus {
             border-bottom-color: var(--primary-color);
             border-bottom-width: 2px;
             color: var(--primary-color);
+        }
+        .data-form p.error {
+            font-size: .8em;
+            color: var(--error-color);
         }
         .data-form button, .action-button {
             cursor: pointer;
@@ -127,6 +135,14 @@
         .data-form button.primary:hover, .action-button.primary:hover {
             color: var(--dark-color);
             background-color: var(--primary-color);
+        }
+        .data-form button.remove, .action-button.remove {
+            color: var(--error-color);
+            border-color: var(--error-color);
+        }
+        .data-form button.remove:hover, .action-button.remove:hover {
+            color: var(--dark-color);
+            background-color: var(--error-color);
         }
         /* Layout box */
         <?php

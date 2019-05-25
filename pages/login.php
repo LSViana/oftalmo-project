@@ -15,7 +15,7 @@
         </title>
         <?php scaffold_style() ?>
     </head>
-    <body class="flex flex-column align-stretch">
+    <body>
         <?php require_component("header") ?>
         <section class="login flex justify-center align-center pa-8" style="flex: 1;">
             <!-- Login -->

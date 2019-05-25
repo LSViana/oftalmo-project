@@ -69,6 +69,34 @@
     }
     //
     function update_item_collection($name, $id, $object) {
-
+        $collectionFolder = COLLECTIONS_FOLDER . "/" . $name;
+        ensure_collection_folder($collectionFolder);
+        //
+        $file = $collectionFolder . "/" . $id . ITEM_EXTENSION;
+        if(file_exists($file)) {
+            $fileHandler = fopen($file, "w");
+            // Removing ID property before saving
+            unset($object["id"]);
+            //
+            $json = json_encode($object);
+            fwrite($fileHandler, $json);
+            fclose($fileHandler);
+            //
+            return true;
+        } else {
+            return null;
+        }
+    }
+    //
+    function delete_item_collection($name, $id) {
+        $collectionFolder = COLLECTIONS_FOLDER . "/" . $name;
+        ensure_collection_folder($collectionFolder);
+        //
+        $file = $collectionFolder . "/" . $id . ITEM_EXTENSION;
+        if(file_exists($file)) {
+            unlink($file);
+        } else {
+            return null;
+        }
     }
 ?>
