@@ -3,7 +3,6 @@
     require_once __DIR__ . "/" . "./database.php";
     //
     function users_authenticate($email, $password) {
-        var_dump($email);
         $users = db_list("user");
         $authenticatedUsers = array_filter($users, function($item) use ($email, $password) {
             try {
@@ -14,5 +13,11 @@
                 return false;
             }
         });
+        if(sizeof($authenticatedUsers) > 0) {
+            return $authenticatedUsers[0];
+        }
+        else {
+            return null;
+        }
     }
 ?>

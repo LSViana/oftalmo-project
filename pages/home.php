@@ -2,7 +2,11 @@
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../components/manager.php";
     require_once __DIR__ . "/" . "../infrastructure/scaffold_style.php";
-?>
+    require_once __DIR__ . "/" . "../infrastructure/page_auth_redirect.php";
+    //
+    if(redirect_if_authenticated()) {
+        return;
+    } else { ?>
 <html lang="en">
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -11,7 +15,6 @@
         <?php scaffold_style() ?>
         <style>
             .card {
-                background-color: white;
                 padding: 16px;
                 box-shadow: 0 0 5px 0px rgba(0,0,0,0.45)
             }
@@ -22,7 +25,7 @@
     </head>
     <body>
         <?php require_component("header") ?>
-        <main class="flex flex-column align-center">
+        <main class="contents flex flex-column align-center">
             <section>
                 <div class="card mt-6">
                     <h1 class="text-center">Laboratórios</h1>
@@ -46,6 +49,5 @@
             </section>    
         </main>
     </body>
-
-    
 </html>
+<?php } ?>

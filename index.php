@@ -3,14 +3,15 @@
     require_once "components/manager.php";
     require_once "infrastructure/scaffold_style.php";
     require_once "infrastructure/request_data.php";
+    require_once "infrastructure/session_manager.php";
     // Only for logged in people
     $redirect = false;
     if($isGet) {
         $redirect = true;
-        if(is_authenticated())
-            header("Location: ./pages/home.php");
+        if(session_is_authenticated())
+            header("Location: ${BASE_URL}/pages/home.php");
         else
-            header("Location: ./pages/login.php");
+            header("Location: ${BASE_URL}/pages/login.php");
     }
     //
     if(!$redirect) {

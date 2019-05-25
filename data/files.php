@@ -1,5 +1,7 @@
 <?php
-    define("COLLECTIONS_FOLDER", "collections");
+    require_once __DIR__ . "/" . "../infrastructure/constants.php";
+    //
+    define("COLLECTIONS_FOLDER", "${ROOT}/collections");
     define("ITEM_EXTENSION", ".json");
     // Creating collections folder if it doesn't exist
     if(!file_exists(COLLECTIONS_FOLDER)) {
@@ -30,6 +32,7 @@
                 fclose($fileHandler);
                 // Converting to associative array
                 $item = json_decode($fileJson, true);
+                $item["id"] = pathinfo($file, PATHINFO_FILENAME);
                 // Adding item to results
                 array_push($results, $item);
             }
@@ -45,5 +48,9 @@
         $files = scandir($collectionFolder);
         $itemExists = array_search($id . ITEM_EXTENSION, $files);
         return $itemExists !== false; // False (as boolean) only if the file isn't found
+    }
+    //
+    function update_item_collection($name, $id, $object) {
+
     }
 ?>

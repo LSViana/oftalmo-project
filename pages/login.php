@@ -10,27 +10,29 @@
         </title>
         <?php scaffold_style() ?>
     </head>
-    <body>
+    <body class="flex flex-column align-stretch">
         <?php require_component("header") ?>
-        <section class="login">
+        <section class="login flex justify-center align-center pa-8" style="flex: 1;">
             <!-- Login -->
-            <form action="../api/users/login.php" method="post">
-                <p>
+            <form action="../api/users/login.php" method="post" class="bg-dark data-form pa-6 elevation-1 border-radius-5">
+                <p class="flex flex-column align-start my-2">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" value="lucas@gmail.com">
                 </p>
-                <p>
+                <p class="flex flex-column align-start my-2">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" value="Asdf1234">
                 </p>
-                <button>
-                    Entrar
-                </button>
-                <section class="subtitle">
-                    <p>
+                <section class="actions flex justify-end my-4">
+                    <button class="primary">
+                        Entrar
+                    </button>
+                </section>
+                <section class="subtitle flex align-center justify-center mt-6">
+                    <p class="text-primary mr-3">
                         Não tem conta?
                     </p>
-                    <button value="register">
+                    <button name="register">
                         Criar conta
                     </button>
                 </section>
