@@ -6,16 +6,14 @@
     require_once __DIR__ . "/" . "../data/laboratories.php";
     require_once __DIR__ . "/" . "../data/softwares.php";
     //
-    if(redirect_if_authenticated()) {
+    if(redirect_if_not_authenticated()) {
         return;
     } else {
         $laboratories = laboratories_list();
         $softwares = softwares_list();
     ?>
-<html lang="en">
+<html>
     <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
         <title><?php echo APP_NAME ?></title>
         <?php scaffold_style() ?>
         <style>

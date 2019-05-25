@@ -2,6 +2,11 @@
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../components/manager.php";
     require_once __DIR__ . "/" . "../infrastructure/scaffold_style.php";
+    require_once __DIR__ . "/" . "../infrastructure/page_auth_redirect.php";
+    //
+    if(redirect_if_authenticated()) {
+        return;
+    } else {
 ?>
 <html>
     <head>
@@ -40,3 +45,6 @@
         </section>
     </body>
 </html>
+<?php
+    }
+?>

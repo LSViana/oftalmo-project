@@ -8,15 +8,9 @@
         global $baseSize;
         global $iterations;
         global $BASE_URL;
-        //
-        $useCached = false;
-        if($useCached) {
-        ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/assets/general.css">
-        <?php
-        }
-        else {
-    ?><style>
+    ?>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
         @import url('https://fonts.googleapis.com/css?family=Raleway|Ubuntu&display=swap');
         /* Variables */
         :root {
@@ -192,6 +186,6 @@
             border-radius: <?php echo $i * 2 ?>px;
         }
         <?php } ?>
-    </style><?php }
+    </style><?php
     }
 ?>

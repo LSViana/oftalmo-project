@@ -60,7 +60,7 @@
             $json = fread($fileHandler, filesize($file));
             fclose($fileHandler);
             //
-            $item = json_decode($json);
+            $item = json_decode($json, true);
             $item["id"] = pathinfo($file, PATHINFO_FILENAME);
             return $item;
         } else {
