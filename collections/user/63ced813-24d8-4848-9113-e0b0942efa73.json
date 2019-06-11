@@ -1,5 +1,6 @@
 {
     "name": "Lucas Viana",
     "email": "lucas@gmail.com",
-    "password": "Asdf1234"
+    "password": "Asdf1234",
+    "is_admin": true
 }

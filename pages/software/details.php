@@ -10,7 +10,7 @@
     $softwareId = $_GET["id"] ?? null;
     $errors = json_decode($_GET["errors"] ?? "[]", true);
     $success = isset($_GET["success"]);
-    $authenticated = session_is_authenticated();
+    $authenticated = session_is_authenticated() && session_is_admin();
     if($authenticated && $softwareId != null) {
         $software = softwares_read($softwareId);
         $allowedToRender = true;

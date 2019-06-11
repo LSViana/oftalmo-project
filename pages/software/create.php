@@ -7,7 +7,7 @@
     require_once __DIR__ . "/" . "../../data/softwares.php";
     //
     $allowedToRender = false;
-    $authenticated = session_is_authenticated();
+    $authenticated = session_is_authenticated() && session_is_admin();
     $success = $_GET["success"] ?? false;
     if($authenticated) {
         $allowedToRender = true;

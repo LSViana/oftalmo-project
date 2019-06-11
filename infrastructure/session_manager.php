@@ -15,4 +15,7 @@
     function session_logout() {
         session_destroy();
     }
+    function session_is_admin() {
+        return session_is_authenticated() && isset(session_get_user()[IS_ADMIN]);
+    }
 ?>

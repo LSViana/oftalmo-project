@@ -6,7 +6,7 @@
     if($isGet) {
         http_response_code(400);
         return;
-    } else {
+    } else if($isPost) {
         $errors = [];
         //
         $name = $_POST["name"] ?? "";

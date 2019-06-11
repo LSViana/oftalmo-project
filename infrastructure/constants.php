@@ -3,6 +3,7 @@
     $ROOT = $_SERVER["DOCUMENT_ROOT"] . $BASE_URL;
     define('APP_NAME', 'Gerenciamento de Softwares');
     define('USER_KEY', 'user');
+    define('IS_ADMIN', 'is_admin');
     // General purpose functions
     if (function_exists('com_create_guid') === false)
     {
