@@ -31,7 +31,7 @@
 
         // Verify errors
         if(sizeof($errors) > 0){
-            header("Location: ../../pages/laboratory/details.php?id=" . $id . "&errors=" . json_decode($errors) . "");
+            header("Location: ../../pages/laboratory/details.php?id=" . $id . "&errors=" . json_encode($errors) . "");
             return;
         }
         // Handle the feature
