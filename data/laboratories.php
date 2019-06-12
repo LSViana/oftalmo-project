@@ -14,4 +14,8 @@
         $laboratories = db_list($collection_laboratory);
         return $laboratories;
     }
+    function laboratories_create($object){
+        global $collection_laboratory;
+        db_create($collection_laboratory, $object);
+    }
 ?>
