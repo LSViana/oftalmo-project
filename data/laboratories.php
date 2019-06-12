@@ -18,4 +18,13 @@
         global $collection_laboratory;
         db_create($collection_laboratory, $object);
     }
+    function laboratories_update($id, $object) {
+        global $BASE_URL;
+        global $collection_laboratory;
+        db_update($collection_laboratory, $id, $object);
+    }
+    function laboratories_delete($id){
+        global $collection_laboratory;
+        db_delete($collection_laboratory, $id);
+    }
 ?>
