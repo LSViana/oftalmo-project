@@ -53,8 +53,17 @@
             color: unset;
         }
         /* Containers */
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+        .bg-error {
+            background-color: var(--error-color);
+        }
         .bg-dark {
             background-color: var(--dark-color);
+        }
+        .bg-dark-light {
+            background-color: var(--dark-light-color);
         }
         .overflow-x-auto {
             overflow-x: auto;
@@ -64,6 +73,9 @@
         }
         .border-radius-circular {
             border-radius: 1e10px;
+        }
+        .border-white {
+            border: white 2px solid;
         }
         .thumb-image {
             height: 32px;
@@ -91,6 +103,8 @@
         .text-font-body { font-family: 'Ubuntu'; }
         .text-weight-light { font-weight: lighter; }
         .text-weight-bold { font-weight: bold; }
+        .text-small { font-size: .6em; }
+        .text-medium { font-size: .8em; }
         /* Forms */
         .data-form p input, .data-form p textarea {
             border: none;

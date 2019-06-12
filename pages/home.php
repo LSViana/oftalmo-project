@@ -39,17 +39,16 @@
                                     <?php echo $laboratory["name"] ?>
                                 </h3>
                                 <a
-                                    class="action-button py-1 px-3"
-                                    style="font-size: .6em"
+                                    class="action-button py-1 px-3 text-small"
                                     href="<?php echo $BASE_URL . "/pages/laboratory/details.php?id=" . $laboratory["id"] ?>">
                                     Detalhes 🡪
                                 </a>
                             </div>
-                            <div class="flex justify-between">
-                                <p class="mt-2" style="font-size: .8em;">
+                            <div class="flex justify-between text-medium">
+                                <p class="mt-2">
                                     Computadores: <span class="text-weight-bold"><?php echo $laboratory["computers"] ?></span>
                                 </p>
-                                <p class="mt-2" style="font-size: .8em;">
+                                <p class="mt-2">
                                     Softwares: <span class="text-weight-bold"><?php echo sizeof($laboratory["softwares"]) ?></span>
                                 </p>
                             </div>
@@ -110,8 +109,7 @@
                                     </h3>
                                 </div>
                                 <a
-                                    class="action-button py-1 px-3"
-                                    style="font-size: .6em"
+                                    class="action-button py-1 px-3 text-small"
                                     href="<?php echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"] ?>">
                                     Detalhes 🡪
                                 </a>
