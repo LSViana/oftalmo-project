@@ -13,6 +13,12 @@
         $name = $_POST["name"] ?? "";
         $computers = $_POST["computers"] ?? "";
         $remove = isset($_POST["remove"]);
+        $manageSoftwares = isset($_POST["softwares"]);
+        
+        if($manageSoftwares) {
+            header("Location: ../../pages/laboratory/softwares.php?id=" . $id);
+            return;
+        }
 
         // Blocking validation (its, if theres no id, theres no entity to validate errors)
         if($id == null){
@@ -47,7 +53,6 @@
                 "softwares" => $laboratory["softwares"]
             ]);
             header("Location: $BASE_URL/pages/laboratory/details.php?id=" . $id . "&success");
-
         }
 
     }

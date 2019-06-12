@@ -60,6 +60,10 @@
                     ],
                     [
                         [
+                            "text" => "Gerenciar Softwares",
+                            "name" => "softwares",
+                        ],
+                        [
                             "text" => "Remover",
                             "name" => "remove",
                             "classes" => "remove",
