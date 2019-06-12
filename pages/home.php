@@ -30,7 +30,14 @@
         <?php require_component("header") ?>
         <main class="contents">
             <section class="laboratories pa-5">
-                <h2>Laboratórios</h2>
+                <div class="flex align-center">
+                    <h2>Laboratórios</h2>
+                    <a href="./laboratory/create.php">
+                        <button class="action-button primary ml-3">
+                            Adicionar
+                        </button>
+                    </a>
+                </div>
                 <section class="laboratories-list my-2 py-1 flex flex-nowrap overflow-x-auto">
                     <?php foreach($laboratories as $laboratory) { ?>
                         <article class="pa-5 bg-dark border-radius-3 mr-1 flex flex-column align-stretch" style="width: 350px;">
