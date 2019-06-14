@@ -2,5 +2,5 @@
 - Add authentication barrier to all features under /apí
 - Create non-destructive update feature
 - Add titles to forms
-- Verify errors not being exhibited in create operations
+- Keep values in forms if errors happen
 - Charts

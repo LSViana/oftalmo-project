@@ -74,11 +74,18 @@
         //
         $file = $collectionFolder . "/" . $id . ITEM_EXTENSION;
         if(file_exists($file)) {
+            // Fetching the existing entity
+            $fetchedEntity = read_item_collection($name, $id);
+            // Setting fresh values
+            foreach($object as $key => $value) {
+                $fetchedEntity[$key] = $value;
+            }
+            // Writing to file
             $fileHandler = fopen($file, "w");
             // Removing ID property before saving
-            unset($object["id"]);
+            unset($fetchedEntity["id"]);
             //
-            $json = json_encode($object);
+            $json = json_encode($fetchedEntity);
             fwrite($fileHandler, $json);
             fclose($fileHandler);
             //

@@ -19,15 +19,7 @@
         http_response_code(400);
         return;
     }
-    // Recoverying the laboratory
-    $laboratory = laboratories_read($laboratoryId);
-    // Removing the software
-    $freshSoftwares = array_values(array_filter($laboratory["softwares"], function($item) use($softwareId) {
-        return $item != $softwareId;
-    }));
-    $laboratory["softwares"] = $freshSoftwares;
-    // Updating the laboratory
-    laboratories_update($laboratoryId, $laboratory);
+    laboratories_unattach_software($laboratoryId, $softwareId);
     // Sending back to the laboratory softwares page
     header("Location: ../../pages/laboratory/softwares.php?id=" . $laboratoryId);
 ?>

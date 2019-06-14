@@ -19,12 +19,7 @@
         http_response_code(400);
         return;
     }
-    // Recoverying the laboratory
-    $laboratory = laboratories_read($laboratoryId);
-    // Appending the software
-    array_push($laboratory["softwares"], $softwareId);
-    // Updating the laboratory
-    laboratories_update($laboratoryId, $laboratory);
+    laboratories_attach_software($laboratoryId, $softwareId);
     // Sending back to the laboratory softwares page
     header("Location: ../../pages/laboratory/softwares.php?id=" . $laboratoryId);
 ?>

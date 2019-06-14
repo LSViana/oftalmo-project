@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
     require_once __DIR__ . "/" . "./database.php";
+    require_once __DIR__ . "/" . "./laboratories.php";
     $collection_software = "software";
     //
     function softwares_read($id) {
@@ -17,6 +18,11 @@
     //
     function softwares_delete($id) {
         global $collection_software;
+        // Remove this software from all laboratories
+        $laboratories = db_list("laboratory");
+        foreach($laboratories as $laboratory) {
+            laboratories_unattach_software($laboratory["id"], $id);
+        }
         db_delete($collection_software, $id);
     }
     //

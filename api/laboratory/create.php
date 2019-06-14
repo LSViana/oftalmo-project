@@ -10,19 +10,17 @@
         $errors = [];
         $name = $_POST["name"] ?? "";
         $computers = $_POST["computers"] ?? "";
-
         // Validations
         if(strlen($name) < 3){
             $errors["name"] = "Nome deve ter mais do que 3 caracteres";
-        }if(!(is_int(intval($computers)))){
-            $errors["computers"] = "A quantidade de computadores deve ser inteira";
-        }else if($computers < 1){
-            $erros["computers"] = "A quantidade de computadores deve ser maior do que 1";
+        }
+        if(intval($computers) == 0) {
+            $errors["computers"] = "A quantidade de computadores deve ser ao menos 1";
         }
 
         // Verify errors
         if(sizeof($errors) > 0){
-            header("Location: ../../pages/laboratory/create.php?id=". $id . "&errors=" . json_encode($errors) . "");
+            header("Location: ../../pages/laboratory/create.php?errors=" . json_encode($errors) . "");
             return;
         }
         // Handle the feature

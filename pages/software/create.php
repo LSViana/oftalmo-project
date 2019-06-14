@@ -21,6 +21,10 @@
         }
         return;
     } else {
+        $errors = $_GET["errors"] ?? null;
+        if($errors != null) {
+            $errors = json_decode($errors, true);
+        }
 ?>
 <html>
     <head>
@@ -35,7 +39,7 @@
             <?php
                 form_build(
                     null,
-                    null,
+                    $errors,
                     $success,
                     true,
                     "../../api/softwares/create.php",

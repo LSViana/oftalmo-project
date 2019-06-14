@@ -28,7 +28,7 @@
         }
         // Verify errors
         if(sizeof($errors) > 0) {
-            header("Location: ../../pages/software/create.php?id=" . $id . "&errors=" . json_encode($errors) . "");
+            header("Location: ../../pages/software/create.php?errors=" . json_encode($errors) . "");
             return;
         }
         // Handle the feature
