@@ -3,7 +3,12 @@
     require __DIR__ . "/" . "../../infrastructure/request_data.php";
     require __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require __DIR__ . "/" . "../../data/laboratories.php";
+    require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     //
+    if(!session_is_admin()) {
+        http_response_code(403);
+        return;
+    }
     $isAuthenticated = session_is_authenticated() && session_is_admin();
     if(!$isAuthenticated) {
         http_response_code(401);

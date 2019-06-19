@@ -59,9 +59,10 @@
                                     Softwares: <span class="text-weight-bold"><?php echo sizeof($laboratory["softwares"]) ?></span>
                                 </p>
                             </div>
-                            <section class="softwares mt-3 pb-1 flex flex-row flex-nowrap overflow-x-auto">
+                            <section class="softwares mt-3 pb-1 flex flex-row flex-nowrap overflow-x-auto"
+                                style="width: 100%">
                                 <?php
-                                    $amountOfSoftwaresToShow = 3;
+                                    $amountOfSoftwaresToShow = 1e10;
                                     $softwaresIdSlice = array_slice($laboratory["softwares"], 0, $amountOfSoftwaresToShow);
                                     //
                                     foreach($softwaresIdSlice as $softwareId) {
@@ -130,9 +131,9 @@
             </section>
             <hr />
             <section class="charts py-5">
-                <div class="flex flex-column align-start">
+                <div class="flex flex-column">
                     <h2 class="ml-5">Gráficos</h2>
-                    <article class="charts-lists flex flex-row flex-wrap ma-3">
+                    <article class="charts-lists flex flex-row flex-wrap justify-center ma-3">
                         <div class="flex flex-column align-center ma-2 pa-4 bg-dark border-radius-3">
                             <h3>
                                 Softwares por laboratório
