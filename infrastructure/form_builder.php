@@ -1,5 +1,5 @@
 <?php
-    function form_build($model, $errors, $success, $includeId, $action, $method, $classes, $styles, $fields, $buttons) {
+    function form_build($model, $title, $errors, $success, $includeId, $action, $method, $classes, $styles, $fields, $buttons) {
     ?>
     <form
         action="<?php echo $action ?>"
@@ -7,10 +7,15 @@
         class="data-form pa-6 bg-dark border-radius-5 elevation-1 <?php echo $classes ?>"
         style="<?php echo $styles ?>">
         <?php
+            if($title) {
+        ?>
+            <h2 class="form-title"><?php echo $title ?></h2>
+        <?php
+            }
             if($includeId) {
-            ?>
+        ?>
                 <input type="hidden" name="id" value="<?php echo ($model["id"] ?? "") ?>">
-            <?php
+        <?php
             }
         ?>
         <?php

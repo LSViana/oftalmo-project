@@ -106,6 +106,12 @@
         .text-small { font-size: .6em; }
         .text-medium { font-size: .8em; }
         /* Forms */
+        .data-form .form-title {
+            margin-bottom: calc(var(--base-size) * 6);
+            border-left: calc(var(--base-size) * 1) solid var(--primary-color);
+            margin-left: calc(var(--base-size) * -6);
+            padding-left: calc(var(--base-size) * 6 - var(--base-size) * 1);
+        }
         .data-form p input, .data-form p textarea {
             border: none;
             padding: calc(var(--base-size) * 2);

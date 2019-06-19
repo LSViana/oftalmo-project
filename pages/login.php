@@ -20,6 +20,7 @@
         <section class="login flex justify-center align-center pa-8" style="flex: 1;">
             <!-- Login -->
             <form action="../api/users/login.php" method="post" class="bg-dark data-form pa-6 elevation-1 border-radius-5">
+                <h2 class="form-title">Autenticação</h2>
                 <p class="flex flex-column align-start my-2">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" id="email" value="lucas@gmail.com">
