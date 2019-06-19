@@ -128,6 +128,24 @@
                     <?php } ?>
                 </section>
             </section>
+            <hr />
+            <section class="charts py-5">
+                <div class="flex flex-column align-start">
+                    <h2 class="ml-5">Gráficos</h2>
+                    <article class="charts-lists flex flex-row flex-wrap ma-3">
+                        <div class="flex flex-column align-center ma-2 pa-2 bg-dark border-radius-3">
+                            <h3>
+                                Softwares por laboratório
+                            </h3>
+                            <div class="border-radius-2 overflow-hidden">
+                                <img
+                                    src="../api/charts/software-by-laboratory.php"
+                                    alt="Gráfico de softwares por laboratório">
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </main>
     </body>
 </html>

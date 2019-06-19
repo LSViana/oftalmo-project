@@ -2,6 +2,12 @@
     $BASE_URL = "/oftalmo-project";
     $ROOT = $_SERVER["DOCUMENT_ROOT"] . $BASE_URL;
     define('APP_NAME', 'Gerenciamento de Softwares');
+    define('DARK_LIGHT_COLOR', '#646464');
+    define('DARK_COLOR', '#323232');
+    define('PRIMARY_COLOR', '#42bff4');
+    define('PRIMARY_DARK_COLOR', '#38a3d1');
+    define('ACCENT_COLOR', '#f4ee41');
+    define('ERROR_COLOR', '#f47d42');
     define('USER_KEY', 'user');
     define('IS_ADMIN', 'is_admin');
     // General purpose functions

@@ -15,12 +15,12 @@
         /* Variables */
         :root {
             /* Colors */
-            --dark-light-color: rgba(100, 100, 100, 1);
-            --dark-color: rgba(50, 50, 50, 1);
-            --primary-color: #42bff4;
-            --primary-dark-color: #38a3d1;
-            --accent-color: #f4ee41;
-            --error-color: #f47d42;
+            --dark-light-color: <?php echo DARK_LIGHT_COLOR ?>;
+            --dark-color: <?php echo DARK_COLOR ?>;
+            --primary-color: <?php echo PRIMARY_COLOR ?>;
+            --primary-dark-color: <?php echo PRIMARY_DARK_COLOR ?>;
+            --accent-color: <?php echo ACCENT_COLOR ?>;
+            --error-color: <?php echo ERROR_COLOR ?>;
             /* Dimensions */
             --base-size: <?php echo $baseSize ?>;
         }
@@ -67,6 +67,9 @@
         }
         .overflow-x-auto {
             overflow-x: auto;
+        }
+        .overflow-hidden {
+            overflow: hidden;
         }
         ul {
             list-style: none;
