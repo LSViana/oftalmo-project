@@ -3,6 +3,7 @@
     require_once __DIR__ . "/" . "../components/manager.php";
     require_once __DIR__ . "/" . "../infrastructure/scaffold_style.php";
     require_once __DIR__ . "/" . "../infrastructure/page_auth_redirect.php";
+    require_once __DIR__ . "/" . "../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../data/laboratories.php";
     require_once __DIR__ . "/" . "../data/softwares.php";
     //
@@ -11,6 +12,7 @@
     } else {
         $laboratories = laboratories_list();
         $softwares = softwares_list();
+        $isAdmin = session_is_admin();
     ?>
 <html>
     <head>
@@ -19,7 +21,7 @@
         <style>
             .card {
                 padding: 16px;
-                box-shadow: 0 0 5px 0px rgba(0,0,0,0.45)
+                box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.45);
             }
             .software-tag {
                 border: calc(var(--base-size) / 2) solid;
@@ -32,11 +34,16 @@
             <section class="laboratories pa-5">
                 <div class="flex align-center">
                     <h2>Laboratórios</h2>
-                    <a href="./laboratory/create.php">
-                        <button class="action-button primary ml-3">
-                            Adicionar
-                        </button>
-                    </a>
+                    <?php if($isAdmin) {
+                    ?>
+                        <a href="./laboratory/create.php">
+                            <button class="action-button primary ml-3">
+                                Adicionar
+                            </button>
+                        </a>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <section class="laboratories-list my-2 py-1 flex flex-nowrap overflow-x-auto">
                     <?php foreach($laboratories as $laboratory) { ?>
@@ -45,11 +52,16 @@
                                 <h3 class="text-weight-bold text-font-body text-primary">
                                     <?php echo $laboratory["name"] ?>
                                 </h3>
+                                <?php if($isAdmin) {
+                                ?>
                                 <a
                                     class="action-button py-1 px-3 text-small"
                                     href="<?php echo $BASE_URL . "/pages/laboratory/details.php?id=" . $laboratory["id"] ?>">
                                     Detalhes 🡪
                                 </a>
+                                <?php
+                                }
+                                ?>
                             </div>
                             <div class="flex justify-between text-medium">
                                 <p class="mt-2">
@@ -72,7 +84,7 @@
                                         if($software != null) {
                                             $softwareColor = $software["color"];
                                             ?>
-                                            <a href="<?php echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"] ?>">
+                                            <a href="<?php if($isAdmin) echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"]; else echo "" ?>">
                                                 <p
                                                     class="software-tag py-1 px-3 mr-1 border-radius-circular"
                                                     style="<?php echo "border-color: " . $softwareColor . "; color: " . $softwareColor . "; font-size: .75em;" ?>">
@@ -92,11 +104,16 @@
             <section class="softwares pa-5">
                 <div class="flex align-center">
                     <h2>Softwares</h2>
+                    <?php if($isAdmin) {
+                    ?>
                     <a href="./software/create.php">
                         <button class="action-button primary ml-3">
                             Adicionar
                         </button>
                     </a>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <section class="softwares-list my-2 py-1 flex flex-nowrap overflow-x-auto">
                     <?php
@@ -116,11 +133,16 @@
                                         <?php echo $software["name"] ?>
                                     </h3>
                                 </div>
+                                <?php if($isAdmin) {
+                                ?>
                                 <a
                                     class="action-button py-1 px-3 text-small"
                                     href="<?php echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"] ?>">
                                     Detalhes 🡪
                                 </a>
+                                <?php
+                                }
+                                ?>
                             </div>
                             <p class="mt-3 text-justified" style="font-size: .9em;">
                                 <?php echo $software["description"] ?>
