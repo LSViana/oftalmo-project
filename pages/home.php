@@ -84,13 +84,23 @@
                                         if($software != null) {
                                             $softwareColor = $software["color"];
                                             ?>
-                                            <a href="<?php if($isAdmin) echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"]; else echo "" ?>">
+                                            <?php if($isAdmin) { 
+                                            ?><a href="<?php echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"]; ?>">
                                                 <p
                                                     class="software-tag py-1 px-3 mr-1 border-radius-circular"
                                                     style="<?php echo "border-color: " . $softwareColor . "; color: " . $softwareColor . "; font-size: .75em;" ?>">
                                                     <?php echo $software["name"] ?>
                                                 </p>
                                             </a>
+                                            <?php
+                                            } else {
+                                            ?><p
+                                                class="software-tag py-1 px-3 mr-1 border-radius-circular"
+                                                style="<?php echo "border-color: " . $softwareColor . "; color: " . $softwareColor . "; font-size: .75em;" ?>">
+                                                <?php echo $software["name"] ?>
+                                            </p>
+                                            <?php }
+                                            ?>
                                         <?php
                                         }
                                     }
