@@ -2,11 +2,16 @@
     require_once __DIR__ . "/" . "../../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../../infrastructure/request_data.php";
     require_once __DIR__ . "/" . "../../data/softwares.php";
+    require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     //
     if($isGet) {
         http_response_code(400);
         return;
     } else {
+        if(!session_is_admin()) {
+            http_response_code(403);
+            return;
+        }
         $errors = [];
         //
         $id = $_POST["id"] ?? null;

@@ -38,6 +38,7 @@
             <?php
                 form_build(
                     null,
+                    "Criar laboratório",
                     $errors,
                     $success,
                     true,

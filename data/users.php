@@ -16,7 +16,7 @@
     //
     function users_authenticate($email, $password) {
         $users = users_list();
-        $authenticatedUsers = array_filter($users, function($item) use ($email, $password) {
+        $authenticatedUsers = array_values(array_filter($users, function($item) use ($email, $password) {
             try {
                 if($item["email"] == $email && $item["password"] == $password) {
                     return true;        
@@ -24,7 +24,7 @@
             } catch(Exception $err) {
                 return false;
             }
-        });
+        }));
         if(sizeof($authenticatedUsers) > 0) {
             return $authenticatedUsers[0];
         }

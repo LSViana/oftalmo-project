@@ -15,12 +15,12 @@
         /* Variables */
         :root {
             /* Colors */
-            --dark-light-color: rgba(100, 100, 100, 1);
-            --dark-color: rgba(50, 50, 50, 1);
-            --primary-color: #42bff4;
-            --primary-dark-color: #38a3d1;
-            --accent-color: #f4ee41;
-            --error-color: #f47d42;
+            --dark-light-color: <?php echo DARK_LIGHT_COLOR ?>;
+            --dark-color: <?php echo DARK_COLOR ?>;
+            --primary-color: <?php echo PRIMARY_COLOR ?>;
+            --primary-dark-color: <?php echo PRIMARY_DARK_COLOR ?>;
+            --accent-color: <?php echo ACCENT_COLOR ?>;
+            --error-color: <?php echo ERROR_COLOR ?>;
             /* Dimensions */
             --base-size: <?php echo $baseSize ?>;
         }
@@ -43,6 +43,7 @@
             width: 100%;
             height: 100%;
             background-color: var(--dark-light-color);
+            overflow-x: hidden;
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 100;
@@ -67,6 +68,9 @@
         }
         .overflow-x-auto {
             overflow-x: auto;
+        }
+        .overflow-hidden {
+            overflow: hidden;
         }
         ul {
             list-style: none;
@@ -106,6 +110,12 @@
         .text-small { font-size: .6em; }
         .text-medium { font-size: .8em; }
         /* Forms */
+        .data-form .form-title {
+            margin-bottom: calc(var(--base-size) * 6);
+            border-left: calc(var(--base-size) * 1) solid var(--primary-color);
+            margin-left: calc(var(--base-size) * -6);
+            padding-left: calc(var(--base-size) * 6 - var(--base-size) * 1);
+        }
         .data-form p input, .data-form p textarea {
             border: none;
             padding: calc(var(--base-size) * 2);

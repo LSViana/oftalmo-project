@@ -37,6 +37,7 @@
             <?php
                 form_build(
                     $laboratory,
+                    "Atualizar laboratório",
                     $errors,
                     $success,
                     true,
