@@ -1,10 +1,12 @@
 public class User {
+    private $id;
     private $name;
     private $email;
     private $password;
     private $is_admin;
 
-    public function User($name, $email, $password, $is_admin){
+    public function User($id, $name, $email, $password, $is_admin){
+        this->$id = $id;
         this->$name = $name;
         this->$email = $email;
         this->$password = $password;
@@ -56,6 +58,16 @@ public class User {
     {
         $this->is_admin = $is_admin;
 
+    }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }
 

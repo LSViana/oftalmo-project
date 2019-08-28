@@ -1,9 +1,11 @@
 public class Laboratory{
+    private $id;
     private $name;
     private $computers;
     private $softwares;
 
-    public function Laboratory($name, $computers, $softwares){
+    public function Laboratory($id, $name, $computers, $softwares){
+        this->$id = $id;
         this->$name = $name;
         this->$computers = $computers;
         this->$softwares = $softwares;
@@ -11,7 +13,7 @@ public class Laboratory{
 
 
     public function Laboratory() {
-        
+
     }
     
     public function getName()
@@ -45,5 +47,15 @@ public class Laboratory{
     {
         $this->softwares = $softwares;
 
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }

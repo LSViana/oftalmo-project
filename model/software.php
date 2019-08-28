@@ -1,10 +1,12 @@
 public class Software {
+    private $id;
     private $color;
     private $name;
     private $logo;
     private $description;
 
-    public class Software($color, $name, $logo, $description){
+    public class Software($id, $color, $name, $logo, $description){
+        this->$id = $id;
         this->$color = $color;
         this->$name = $name;
         this->$logo = $logo;
@@ -53,5 +55,15 @@ public class Software {
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }
