@@ -4,7 +4,7 @@
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../../infrastructure/scaffold_style.php";    
     require_once __DIR__ . "/" . "../../infrastructure/form_builder.php";
-    require_once __DIR__ . "/" . "../../data/laboratories.php";
+    require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
     
     $allowedToRender = false;
     $laboratoryId = $_GET["id"] ?? null;
@@ -12,7 +12,8 @@
     $success = isset($_GET["success"]);
     $authenticated = session_is_authenticated() && session_is_admin();
     if($authenticated && $laboratoryId != null){
-        $laboratory = laboratories_read($laboratoryId);
+        $laboratoriesRepository = new LaboratoriesRepository();
+        $laboratory = $laboratoriesRepository->laboratories_read($laboratoryId);
         $allowedToRender = true;
     }
     if(!$allowedToRender){

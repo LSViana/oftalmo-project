@@ -4,7 +4,7 @@
     require __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require __DIR__ . "/" . "../../infrastructure/scaffold_style.php";
     require __DIR__ . "/" . "../../components/manager.php";
-    require __DIR__ . "/" . "../../data/laboratories.php";
+    require __DIR__ . "/" . "../../data/laboratories_repository.php";
     require __DIR__ . "/" . "../../data/softwares.php";
     //
     $allowedToRender = false;
@@ -13,7 +13,8 @@
     if($authenticated && $isGet && $laboratoryId != null) {
         $allowedToRender = true;
     }
-    $laboratory = laboratories_read($laboratoryId);
+    $laboratoriesRepository = new LaboratoriesRepository();
+    $laboratory = $laboratoriesRepository->laboratories_read($laboratoryId);
     if($laboratory == null) {
         $allowedToRender = false;
     }

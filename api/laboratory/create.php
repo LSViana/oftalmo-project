@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/" . "../../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../../infrastructure/request_data.php";
-    require_once __DIR__ . "/" . "../../data/laboratories.php";
+    require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
 
     if($isGet){
@@ -31,7 +31,8 @@
         // Handle the feature
         else {
             // The result of the method "laboratories_create" is the ID of the newly generated laboratory
-            laboratories_create([
+            $laboratoriesRepository = new LaboratoriesRepository();
+            $laboratoriesRepository->laboratories_create([
                 "name" => $name,
                 "computers" => $computers,
                 "softwares" => array()

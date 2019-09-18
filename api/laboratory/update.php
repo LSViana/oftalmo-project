@@ -1,7 +1,7 @@
 <?php 
     require_once __DIR__ . "/" . "../../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../../infrastructure/request_data.php";
-    require_once __DIR__ . "/" . "../../data/laboratories.php";
+    require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
 
     if($isGet){
@@ -47,12 +47,13 @@
         }
         // Handle the feature
         if($remove){
-            laboratories_delete($id);
+            $laboratoriesRepository = new LaboratoriesRepository();
+            $laboratoriesRepository->laboratories_delete($id);
             header("Location: $BASE_URL/pages/home.php");
         } else {
-            $laboratory = laboratories_read($id);
+            $laboratory = $laboratoriesRepository->laboratories_read($id);
 
-            laboratories_update($id, [
+            $laboratoriesRepository->laboratories_update($id, [
                 "name" => $name,
                 "computers" => $computers,
                 "softwares" => $laboratory["softwares"]

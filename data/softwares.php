@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
     require_once __DIR__ . "/" . "./file_database.php";
-    require_once __DIR__ . "/" . "./laboratories.php";
+    require_once __DIR__ . "/" . "./laboratories_repository.php";
     $collection_software = "software";
     //
     $database = new FileDatabase();
@@ -22,8 +22,9 @@
         global $collection_software, $database;
         // Remove this software from all laboratories
         $laboratories = $database->db_list("laboratory");
+        $laboratoriesRepository = new LaboratoriesRepository();
         foreach($laboratories as $laboratory) {
-            laboratories_unattach_software($laboratory["id"], $id);
+            $laboratoriesRepository->laboratories_unattach_software($laboratory["id"], $id);
         }
         $database->db_delete($collection_software, $id);
     }

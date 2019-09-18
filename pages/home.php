@@ -4,13 +4,14 @@
     require_once __DIR__ . "/" . "../infrastructure/scaffold_style.php";
     require_once __DIR__ . "/" . "../infrastructure/page_auth_redirect.php";
     require_once __DIR__ . "/" . "../infrastructure/session_manager.php";
-    require_once __DIR__ . "/" . "../data/laboratories.php";
+    require_once __DIR__ . "/" . "../data/laboratories_repository.php";
     require_once __DIR__ . "/" . "../data/softwares.php";
     //
     if(redirect_if_not_authenticated()) {
         return;
     } else {
-        $laboratories = laboratories_list();
+        $laboratoriesRepository = new LaboratoriesRepository();
+        $laboratories = $laboratoriesRepository->laboratories_list();
         $softwares = softwares_list();
         $isAdmin = session_is_admin();
     ?>
