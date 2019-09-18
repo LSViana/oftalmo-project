@@ -1,16 +1,18 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
-    require_once __DIR__ . "/" . "./database.php";
+    require_once __DIR__ . "/" . "./file_database.php";
     $collection_user = "user";
     //
+    $database = new FileDatabase();
+    //
     function users_list() {
-        global $collection_user;
-        $users = db_list($collection_user);
+        global $collection_user, $database;
+        $users = $database->db_list($collection_user);
         return $users;
     }
     function users_read($id) {
-        global $collection_user;
-        $user = db_read($collection_user, $id);
+        global $collection_user, $database;
+        $user = $database->db_read($collection_user, $id);
         return $user;
     }
     //

@@ -29,9 +29,11 @@
             }
         </style>
         <nav class="header flex justify-between align-stretch elevation-4">
-            <h1 class="ma-5">
-                <?php echo APP_NAME; ?>
-            </h1>
+            <a href="<?php echo $routes['index'] ?>">
+                <h1 class="ma-5">
+                    <?php echo APP_NAME; ?>
+                </h1>
+            </a>
             <section class="pages flex pr-5">
                 <a href="<?php echo $routes['index'] ?>" class="px-4 flex align-center">
                     <h4 class="text-font-title">HOME</h4>
