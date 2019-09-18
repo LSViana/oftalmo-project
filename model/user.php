@@ -1,74 +1,72 @@
-public class User {
-    private $id;
-    private $name;
-    private $email;
-    private $password;
-    private $is_admin;
-
-    public function User($id, $name, $email, $password, $is_admin){
-        this->$id = $id;
-        this->$name = $name;
-        this->$email = $email;
-        this->$password = $password;
-        this->$is_admin = $is_admin;
-    }
-
-    public function User(){
-
-    }
-
-    public function setName($name){
-        this->$name = $name;
-
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
+<?php
+    class User {
+        private $id;
+        private $name;
+        private $email;
+        private $password;
+        private $is_admin;
     
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    public function getIs_admin()
-    {
-        return $this->is_admin;
-    }
-
-    public function setIs_admin($is_admin)
-    {
-        $this->is_admin = $is_admin;
-
+        public function __construct($id, $name, $email, $password, $is_admin){
+            $this->id = $id;
+            $this->name = $name;
+            $this->email = $email;
+            $this->password = $password;
+            $this->is_admin = $is_admin;
+        }
+    
+        public function setName($name) {
+            $this->name = $name;
+        }
+    
+        public function getEmail()
+        {
+            return $this->email;
+        }
+    
+    
+        public function setEmail($email)
+        {
+            $this->email = $email;
+        }
+    
+        
+        public function getName()
+        {
+            return $this->name;
+        }
+    
+        public function getPassword()
+        {
+            return $this->password;
+        }
+    
+        public function setPassword($password)
+        {
+            $this->password = $password;
+        }
+    
+        public function getIs_admin()
+        {
+            return $this->is_admin;
+        }
+    
+        public function setIs_admin($is_admin)
+        {
+            $this->is_admin = $is_admin;
+    
+        }
+        
+        public function getId()
+        {
+            return $this->id;
+        }
+    
+        public function setId($id)
+        {
+            $this->id = $id;
+        }
     }
     
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-}
-
-
+    
+    
+?>
