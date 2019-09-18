@@ -46,13 +46,12 @@
             return;
         }
         // Handle the feature
+        $laboratoriesRepository = new LaboratoriesRepository();
         if($remove){
-            $laboratoriesRepository = new LaboratoriesRepository();
             $laboratoriesRepository->laboratories_delete($id);
             header("Location: $BASE_URL/pages/home.php");
         } else {
             $laboratory = $laboratoriesRepository->laboratories_read($id);
-
             $laboratoriesRepository->laboratories_update($id, [
                 "name" => $name,
                 "computers" => $computers,

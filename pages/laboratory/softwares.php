@@ -5,7 +5,7 @@
     require __DIR__ . "/" . "../../infrastructure/scaffold_style.php";
     require __DIR__ . "/" . "../../components/manager.php";
     require __DIR__ . "/" . "../../data/laboratories_repository.php";
-    require __DIR__ . "/" . "../../data/softwares.php";
+    require __DIR__ . "/" . "../../data/softwares_repository.php";
     //
     $allowedToRender = false;
     $authenticated = session_is_authenticated() && session_is_admin();
@@ -26,7 +26,8 @@
         }
         return;
     } else {
-        $softwares = softwares_list();
+        $softwaresRepository = new SoftwaresRepository();
+        $softwares = $softwaresRepository->softwares_list();
         $notAttachedSoftwares = array_values(array_filter($softwares, function($item) use($laboratory) {
             $isAttached = array_search($item["id"], $laboratory["softwares"]) !== false;
             return !$isAttached;

@@ -4,7 +4,7 @@
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../../infrastructure/scaffold_style.php";    
     require_once __DIR__ . "/" . "../../infrastructure/form_builder.php";
-    require_once __DIR__ . "/" . "../../data/softwares.php";
+    require_once __DIR__ . "/" . "../../data/softwares_repository.php";
     //
     $allowedToRender = false;
     $softwareId = $_GET["id"] ?? null;
@@ -12,7 +12,8 @@
     $success = isset($_GET["success"]);
     $authenticated = session_is_authenticated() && session_is_admin();
     if($authenticated && $softwareId != null) {
-        $software = softwares_read($softwareId);
+        $softwaresRepository = new SoftwaresRepository();
+        $software = $softwaresRepository->softwares_read($softwareId);
         $allowedToRender = true;
     }
     if(!$allowedToRender) {

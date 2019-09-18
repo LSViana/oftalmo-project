@@ -56,7 +56,7 @@
             }));
             $laboratory["softwares"] = $freshSoftwares;
             // Updating the laboratory
-            laboratories_update($laboratoryId, $laboratory);
+            $this->laboratories_update($laboratoryId, $laboratory);
         }
     }
 ?>

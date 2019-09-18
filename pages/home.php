@@ -5,14 +5,15 @@
     require_once __DIR__ . "/" . "../infrastructure/page_auth_redirect.php";
     require_once __DIR__ . "/" . "../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../data/laboratories_repository.php";
-    require_once __DIR__ . "/" . "../data/softwares.php";
+    require_once __DIR__ . "/" . "../data/softwares_repository.php";
     //
     if(redirect_if_not_authenticated()) {
         return;
     } else {
         $laboratoriesRepository = new LaboratoriesRepository();
+        $softwaresRepository = new SoftwaresRepository();
         $laboratories = $laboratoriesRepository->laboratories_list();
-        $softwares = softwares_list();
+        $softwares = $softwaresRepository->softwares_list();
         $isAdmin = session_is_admin();
     ?>
 <html>

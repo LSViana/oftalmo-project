@@ -4,7 +4,6 @@
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../../infrastructure/scaffold_style.php";    
     require_once __DIR__ . "/" . "../../infrastructure/form_builder.php";
-    require_once __DIR__ . "/" . "../../data/softwares.php";
     //
     $allowedToRender = false;
     $authenticated = session_is_authenticated() && session_is_admin();

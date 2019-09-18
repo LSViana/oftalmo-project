@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/" . "../../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../../infrastructure/request_data.php";
-    require_once __DIR__ . "/" . "../../data/softwares.php";
+    require_once __DIR__ . "/" . "../../data/softwares_repository.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     //
     if($isGet) {
@@ -39,7 +39,8 @@
         // Handle the feature
         else {
             // The result of the method "softwares_create" is the ID of the newly generated software
-            softwares_create([
+            $softwaresRepository = new SoftwaresRepository();
+            $softwaresRepository->softwares_create([
                 "name" => $name,
                 "color" => $color,
                 "logo" => $logo,

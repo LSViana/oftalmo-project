@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/" . "../../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../../infrastructure/request_data.php";
-    require_once __DIR__ . "/" . "../../data/softwares.php";
+    require_once __DIR__ . "/" . "../../data/softwares_repository.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     //
     if($isGet) {
@@ -44,12 +44,13 @@
             return;
         }
         // Handle the feature
+        $softwaresRepository = new SoftwaresRepository();
         if($remove) {
-            softwares_delete($id);
+            $softwaresRepository->softwares_delete($id);
             header("Location: $BASE_URL/pages/home.php");
         }
         else {
-            softwares_update($id, [
+            $softwaresRepository->softwares_update($id, [
                 "name" => $name,
                 "color" => $color,
                 "logo" => $logo,
