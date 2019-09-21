@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
-    require_once __DIR__ . "/" . "./file_database.php";
+    require_once __DIR__ . "/" . "./mysql_database.php";
     require_once __DIR__ . "/" . "./laboratories_repository.php";
     $collection_software = "software";
     //
@@ -8,7 +8,7 @@
         private $database;
 
         public function __construct() {
-            $this->database = new FileDatabase();
+            $this->database = new MySQLDatabase();
         }
         
         public function softwares_read($id) {

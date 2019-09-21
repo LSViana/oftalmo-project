@@ -29,7 +29,7 @@
 ?>
 <html>
     <head>
-        <title>Detalhes do Laoratório | <?php echo APP_NAME ?></title>
+        <title>Detalhes do Laboratório | <?php echo APP_NAME ?></title>
         <?php scaffold_style() ?>
         <style>
         </style>

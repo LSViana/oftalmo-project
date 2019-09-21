@@ -73,40 +73,42 @@
                                     Computadores: <span class="text-weight-bold"><?php echo $laboratory["computers"] ?></span>
                                 </p>
                                 <p class="mt-2">
-                                    Softwares: <span class="text-weight-bold"><?php echo sizeof($laboratory["softwares"]) ?></span>
+                                    Softwares: <span class="text-weight-bold"><?php echo (is_array($laboratory["softwares"]) ? sizeof($laboratory["softwares"]): 0) ?></span>
                                 </p>
                             </div>
                             <section class="softwares mt-3 pb-1 flex flex-row flex-nowrap overflow-x-auto"
                                 style="width: 100%">
                                 <?php
-                                    $amountOfSoftwaresToShow = 1e10;
-                                    $softwaresIdSlice = array_slice($laboratory["softwares"], 0, $amountOfSoftwaresToShow);
-                                    //
-                                    foreach($softwaresIdSlice as $softwareId) {
-                                        $software = array_values(array_filter($softwares, function($item) use ($softwareId) {
-                                            return $item["id"] == $softwareId;
-                                        }))[0] ?? null;
-                                        if($software != null) {
-                                            $softwareColor = $software["color"];
-                                            ?>
-                                            <?php if($isAdmin) { 
-                                            ?><a href="<?php echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"]; ?>">
-                                                <p
+                                    if(is_array($laboratory["softwares"])) {
+                                        $amountOfSoftwaresToShow = 1e10;
+                                        $softwaresIdSlice = array_slice($laboratory["softwares"], 0, $amountOfSoftwaresToShow);
+                                        //
+                                        foreach($softwaresIdSlice as $softwareId) {
+                                            $software = array_values(array_filter($softwares, function($item) use ($softwareId) {
+                                                return $item["id"] == $softwareId;
+                                            }))[0] ?? null;
+                                            if($software != null) {
+                                                $softwareColor = $software["color"];
+                                                ?>
+                                                <?php if($isAdmin) { 
+                                                ?><a href="<?php echo $BASE_URL . "/pages/software/details.php?id=" . $software["id"]; ?>">
+                                                    <p
+                                                        class="software-tag py-1 px-3 mr-1 border-radius-circular"
+                                                        style="<?php echo "border-color: " . $softwareColor . "; color: " . $softwareColor . "; font-size: .75em;" ?>">
+                                                        <?php echo $software["name"] ?>
+                                                    </p>
+                                                </a>
+                                                <?php
+                                                } else {
+                                                ?><p
                                                     class="software-tag py-1 px-3 mr-1 border-radius-circular"
                                                     style="<?php echo "border-color: " . $softwareColor . "; color: " . $softwareColor . "; font-size: .75em;" ?>">
                                                     <?php echo $software["name"] ?>
                                                 </p>
-                                            </a>
+                                                <?php }
+                                                ?>
                                             <?php
-                                            } else {
-                                            ?><p
-                                                class="software-tag py-1 px-3 mr-1 border-radius-circular"
-                                                style="<?php echo "border-color: " . $softwareColor . "; color: " . $softwareColor . "; font-size: .75em;" ?>">
-                                                <?php echo $software["name"] ?>
-                                            </p>
-                                            <?php }
-                                            ?>
-                                        <?php
+                                            }
                                         }
                                     }
                                 ?>

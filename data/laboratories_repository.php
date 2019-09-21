@@ -1,29 +1,42 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
-    require_once __DIR__ . "/" . "./file_database.php";
+    require_once __DIR__ . "/" . "./mysql_database.php";
     $collection_laboratory = "laboratory";
     //
     class LaboratoriesRepository {
         private $database;
         
         public function __construct() {
-            $this->database = new FileDatabase();
+            $this->database = new MySQLDatabase();
         }
 
         public function laboratories_read($id) {
             global $collection_laboratory;
             $laboratory = $this->database->db_read($collection_laboratory, $id);
+            if(is_string($laboratory["softwares"])) {
+                $laboratory["softwares"] = json_decode($laboratory["softwares"]);
+            }
             return $laboratory;
         }
 
         public function laboratories_list() {
             global $collection_laboratory;
             $laboratories = $this->database->db_list($collection_laboratory);
+            $index = 0;
+            foreach ($laboratories as $laboratory) {
+                if(is_string($laboratory["softwares"])) {
+                    $laboratory["softwares"] = json_decode($laboratory["softwares"]);
+                    $laboratories[$index] = $laboratory;
+                }
+                $index++;
+            }
             return $laboratories;
         }
 
-        public function laboratories_create($object){
+        public function laboratories_create($object) {
             global $collection_laboratory;
+            // Creating a default array of zero softwares
+            $object["softwares"] = "[]";
             $this->database->db_create($collection_laboratory, $object);
         }
 
