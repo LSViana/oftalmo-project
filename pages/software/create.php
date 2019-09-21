@@ -5,8 +5,10 @@
     require_once __DIR__ . "/" . "../../infrastructure/scaffold_style.php";    
     require_once __DIR__ . "/" . "../../infrastructure/form_builder.php";
     //
+    $sessionManager = new SessionManager();
+    //
     $allowedToRender = false;
-    $authenticated = session_is_authenticated() && session_is_admin();
+    $authenticated = $sessionManager->session_is_authenticated() && $sessionManager->session_is_admin();
     $success = $_GET["success"] ?? false;
     if($authenticated) {
         $allowedToRender = true;

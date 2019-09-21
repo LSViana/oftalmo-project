@@ -7,6 +7,8 @@
     require_once __DIR__ . "/" . "../data/laboratories_repository.php";
     require_once __DIR__ . "/" . "../data/softwares_repository.php";
     //
+    $sessionManager = new SessionManager();
+    //
     if(redirect_if_not_authenticated()) {
         return;
     } else {
@@ -14,7 +16,7 @@
         $softwaresRepository = new SoftwaresRepository();
         $laboratories = $laboratoriesRepository->laboratories_list();
         $softwares = $softwaresRepository->softwares_list();
-        $isAdmin = session_is_admin();
+        $isAdmin = $sessionManager->session_is_admin();
     ?>
 <html>
     <head>

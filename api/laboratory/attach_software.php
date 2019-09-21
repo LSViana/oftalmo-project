@@ -1,17 +1,17 @@
 <?php
-    require __DIR__ . "/" . "../../infrastructure/constants.php";
-    require __DIR__ . "/" . "../../infrastructure/request_data.php";
-    require __DIR__ . "/" . "../../infrastructure/session_manager.php";
-    require __DIR__ . "/" . "../../data/laboratories_repository.php";
+    require_once __DIR__ . "/" . "../../infrastructure/constants.php";
+    require_once __DIR__ . "/" . "../../infrastructure/request_data.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
+    require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
     //
+    $sessionManager = new SessionManager();
     $requestData = new RequestData();
     //
-    if(!session_is_admin()) {
+    if(!$sessionManager->session_is_admin()) {
         http_response_code(403);
         return;
     }
-    $isAuthenticated = session_is_authenticated() && session_is_admin();
+    $isAuthenticated = $sessionManager->session_is_authenticated() && $sessionManager->session_is_admin();
     if(!$isAuthenticated) {
         http_response_code(401);
         return;   

@@ -4,6 +4,7 @@
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../../data/users.php";
     //
+    $sessionManager = new SessionManager();
     $requestData = new RequestData();
     //
     if($requestData->isPost) {
@@ -27,7 +28,7 @@
             return;
         }
         // Save user to session
-        session_set_user($user);
+        $sessionManager->session_set_user($user);
         // Send to the index page
         header("Location: ${BASE_URL}/index.php");
     } else {

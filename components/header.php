@@ -3,6 +3,7 @@
     require_once __DIR__ . "/" . "../infrastructure/request_data.php";
     require_once __DIR__ . "/" . "../infrastructure/session_manager.php";
     //
+    $sessionManager = new SessionManager();
     $requestData = new RequestData();
     // Routes
     $routes = [
@@ -12,7 +13,7 @@
     ];
     // Print component
     function component_header() {
-        global $routes;
+        global $routes, $sessionManager;
         ?><style>
             .header {
                 background-color: var(--dark-color);
@@ -41,7 +42,7 @@
                     <h4 class="text-font-title">HOME</h4>
                 </a>
                 <?php
-                if(session_is_authenticated()) {
+                if($sessionManager->session_is_authenticated()) {
                 ?><a href="<?php echo $routes['logout'] ?>" class="px-4 flex align-center">
                     <h4 class="text-font-title">LOGOUT</h4>
                 </a><?php

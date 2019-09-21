@@ -5,12 +5,14 @@
     require_once __DIR__ . "/" . "../../infrastructure/scaffold_style.php";    
     require_once __DIR__ . "/" . "../../infrastructure/form_builder.php";
     require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
-    
+    //
+    $sessionManager = new SessionManager();
+    //
     $allowedToRender = false;
     $laboratoryId = $_GET["id"] ?? null;
     $errors = json_decode($_GET["errors"] ?? "[]", true);
     $success = isset($_GET["success"]);
-    $authenticated = session_is_authenticated() && session_is_admin();
+    $authenticated = $sessionManager->session_is_authenticated() && $sessionManager->session_is_admin();
     if($authenticated && $laboratoryId != null){
         $laboratoriesRepository = new LaboratoriesRepository();
         $laboratory = $laboratoriesRepository->laboratories_read($laboratoryId);

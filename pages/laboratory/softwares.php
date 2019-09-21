@@ -7,10 +7,11 @@
     require __DIR__ . "/" . "../../data/laboratories_repository.php";
     require __DIR__ . "/" . "../../data/softwares_repository.php";
     //
+    $sessionManager = new SessionManager();
     $requestData = new RequestData();
     //
     $allowedToRender = false;
-    $authenticated = session_is_authenticated() && session_is_admin();
+    $authenticated = $sessionManager->session_is_authenticated() && $sessionManager->session_is_admin();
     $laboratoryId = $_GET["id"] ?? null;
     if($authenticated && $requestData->isGet && $laboratoryId != null) {
         $allowedToRender = true;

@@ -5,12 +5,13 @@
     require_once "infrastructure/request_data.php";
     require_once "infrastructure/session_manager.php";
     //
+    $sessionManager = new SessionManager();
     $requestData = new RequestData();
     // Only for logged in people
     $redirect = false;
     if($requestData->isGet) {
         $redirect = true;
-        if(session_is_authenticated())
+        if($sessionManager->session_is_authenticated())
             header("Location: ${BASE_URL}/pages/home.php");
         else
             header("Location: ${BASE_URL}/pages/login.php");

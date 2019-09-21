@@ -3,10 +3,11 @@
     require_once __DIR__ . "/" . "../infrastructure/request_data.php";
     require_once __DIR__ . "/" . "../infrastructure/session_manager.php";
     //
+    $sessionManager = new SessionManager();
     $requestData = new RequestData();
     //
     if($requestData->isGet) {
-        session_logout();
+        $sessionManager->session_logout();
         //
         header("Location: ${BASE_URL}/index.php");
     } else {

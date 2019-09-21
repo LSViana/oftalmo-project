@@ -6,11 +6,13 @@
     require_once __DIR__ . "/" . "../../infrastructure/form_builder.php";
     require_once __DIR__ . "/" . "../../data/softwares_repository.php";
     //
+    $sessionManager = new SessionManager();
+    //
     $allowedToRender = false;
     $softwareId = $_GET["id"] ?? null;
     $errors = json_decode($_GET["errors"] ?? "[]", true);
     $success = isset($_GET["success"]);
-    $authenticated = session_is_authenticated() && session_is_admin();
+    $authenticated = $sessionManager->session_is_authenticated() && $sessionManager->session_is_admin();
     if($authenticated && $softwareId != null) {
         $softwaresRepository = new SoftwaresRepository();
         $software = $softwaresRepository->softwares_read($softwareId);
