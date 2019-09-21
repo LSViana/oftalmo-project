@@ -4,7 +4,9 @@
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     require_once __DIR__ . "/" . "../../data/users.php";
     //
-    if($isPost) {
+    $requestData = new RequestData();
+    //
+    if($requestData->isPost) {
         $email = $_POST["email"] ?? null;
         $password = $_POST["password"] ?? null;
         $register = isset($_POST["register"]);

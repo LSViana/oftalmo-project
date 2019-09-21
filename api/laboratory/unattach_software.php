@@ -5,6 +5,8 @@
     require __DIR__ . "/" . "../../data/laboratories_repository.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     //
+    $requestData = new RequestData();
+    //
     if(!session_is_admin()) {
         http_response_code(403);
         return;
@@ -14,7 +16,7 @@
         http_response_code(401);
         return;   
     }
-    if(!$isGet) {
+    if(!$requestData->isGet) {
         http_response_code(405);
         return;
     }

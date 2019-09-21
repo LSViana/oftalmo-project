@@ -7,10 +7,12 @@
     require __DIR__ . "/" . "../../data/laboratories_repository.php";
     require __DIR__ . "/" . "../../data/softwares_repository.php";
     //
+    $requestData = new RequestData();
+    //
     $allowedToRender = false;
     $authenticated = session_is_authenticated() && session_is_admin();
     $laboratoryId = $_GET["id"] ?? null;
-    if($authenticated && $isGet && $laboratoryId != null) {
+    if($authenticated && $requestData->isGet && $laboratoryId != null) {
         $allowedToRender = true;
     }
     $laboratoriesRepository = new LaboratoriesRepository();
