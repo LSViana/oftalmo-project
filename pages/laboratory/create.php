@@ -16,8 +16,6 @@
     if(!$allowedToRender) {
         if(!$authenticated) {
             header("Location: ../login.php");
-        } else {
-            
         }
         return;
     } else {

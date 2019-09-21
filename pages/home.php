@@ -8,8 +8,9 @@
     require_once __DIR__ . "/" . "../data/softwares_repository.php";
     //
     $sessionManager = new SessionManager();
+    $pageAuthRedirect = new PageAuthRedirect();
     //
-    if(redirect_if_not_authenticated()) {
+    if($pageAuthRedirect->redirect_if_not_authenticated()) {
         return;
     } else {
         $laboratoriesRepository = new LaboratoriesRepository();

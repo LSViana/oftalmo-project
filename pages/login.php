@@ -4,7 +4,9 @@
     require_once __DIR__ . "/" . "../infrastructure/scaffold_style.php";
     require_once __DIR__ . "/" . "../infrastructure/page_auth_redirect.php";
     //
-    if(redirect_if_authenticated()) {
+    $pageAuthRedirect = new PageAuthRedirect();
+    //
+    if($pageAuthRedirect->redirect_if_authenticated()) {
         return;
     } else {
 ?>
