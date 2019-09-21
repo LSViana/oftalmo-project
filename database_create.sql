@@ -24,7 +24,7 @@ CREATE TABLE Laboratory (
 );
 
 -- Creating users table
-CREATE TABLE user (
+CREATE TABLE User (
   id CHAR(36) NOT NULL,
   name VARCHAR(64) NOT NULL,
   email VARCHAR(64) NOT NULL,
