@@ -9,7 +9,7 @@
     if($requestData->isGet) {
         $sessionManager->session_logout();
         //
-        header("Location: ${BASE_URL}/index.php");
+        header("Location: ../index.php");
     } else {
         http_response_code(400);
     }

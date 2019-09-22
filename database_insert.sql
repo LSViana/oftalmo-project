@@ -6,7 +6,10 @@ DELETE FROM Laboratory WHERE true;
 DELETE FROM User WHERE true;
 
 -- Insert users
--- TODO
+INSERT INTO `User` (`id`, `name`, `email`, `password`, `is_admin`) VALUES
+  ('f302961c-3183-4479-a7b9-957d51df2b58', 'Lucas Viana', 'lucas@gmail.com', 'Asdf1234', true),
+  ('aa0866da-73be-44b1-80ba-3c66ef20c62e', 'Matheus Moreira', 'matheus@gmail.com', 'Asdf1234', false);
+
 
 -- Insert softwares
 INSERT INTO `Software` (`id`, `color`, `name`, `logo`, `description`) VALUES
@@ -16,5 +19,5 @@ INSERT INTO `Software` (`id`, `color`, `name`, `logo`, `description`) VALUES
 
 -- Insert laboratories
 INSERT INTO `Laboratory` (`id`, `name`, `computers`, `softwares`) VALUES
-('E35E3E35-F657-473C-AFA3-7EDFEC85EB91', 'LaboratÃ³rio 1', 32, '[\"421DAE6E-A6CD-476B-9A56-4720A496C419\",\"99657978-22DA-4C61-9116-75EA16136F77\"]'),
-('EE46319D-74C4-4278-B31C-B3B2ACA769E9', 'LaboratÃ³rio 2', 12, '[\"ECF6A8C3-9192-497F-A2E2-8F56664FF31C\"]');
+('E35E3E35-F657-473C-AFA3-7EDFEC85EB91', 'Laboratório 1', 32, '[\"421DAE6E-A6CD-476B-9A56-4720A496C419\",\"99657978-22DA-4C61-9116-75EA16136F77\"]'),
+('EE46319D-74C4-4278-B31C-B3B2ACA769E9', 'Laboratório 2', 12, '[\"ECF6A8C3-9192-497F-A2E2-8F56664FF31C\"]');

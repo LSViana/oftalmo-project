@@ -16,7 +16,6 @@
     }
 
     public function create() {
-      global $BASE_URL;
       //
       if($this->requestData->isGet) {
         http_response_code(400);
@@ -47,7 +46,7 @@
           }
           // Verify errors
           if(sizeof($errors) > 0) {
-              header("Location: $BASE_URL/pages/software/create.php?errors=" . json_encode($errors) . "");
+              header("Location: ../../pages/software/create.php?errors=" . json_encode($errors) . "");
               return;
           }
           // Handle the feature
@@ -60,13 +59,12 @@
                   "description" => $description,
               ]);
               //
-              header("Location: $BASE_URL/pages/home.php");
+              header("Location: ../../pages/home.php");
           }
       }
     }
 
     public function update() {
-      global $BASE_URL;
       //
       if($this->requestData->isGet) {
         http_response_code(400);
@@ -110,7 +108,7 @@
           // Handle the feature
           if($remove) {
               $this->softwaresRepository->softwares_delete($id);
-              header("Location: $BASE_URL/pages/home.php");
+              header("Location: ../../pages/home.php");
           }
           else {
               $this->softwaresRepository->softwares_update($id, [
@@ -120,7 +118,7 @@
                   "description" => $description,
               ]);
               //
-              header("Location: $BASE_URL/pages/software/details.php?id=" . $id . "&success");
+              header("Location: ../../pages/software/details.php?id=" . $id . "&success");
           }
       }
     }

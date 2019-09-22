@@ -52,7 +52,7 @@
         $laboratoriesRepository = new LaboratoriesRepository();
         if($remove){
             $laboratoriesRepository->laboratories_delete($id);
-            header("Location: $BASE_URL/pages/home.php");
+            header("Location: ../../pages/home.php");
         } else {
             $laboratory = $laboratoriesRepository->laboratories_read($id);
             $laboratoriesRepository->laboratories_update($id, [
@@ -60,7 +60,7 @@
                 "computers" => $computers,
                 "softwares" => $laboratory["softwares"]
             ]);
-            header("Location: $BASE_URL/pages/laboratory/details.php?id=" . $id . "&success");
+            header("Location: ../../pages/laboratory/details.php?id=" . $id . "&success");
         }
 
     }

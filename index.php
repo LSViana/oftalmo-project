@@ -12,9 +12,9 @@
     if($requestData->isGet) {
         $redirect = true;
         if($sessionManager->session_is_authenticated())
-            header("Location: ${BASE_URL}/pages/home.php");
+            header("Location: ./pages/home.php");
         else
-            header("Location: ${BASE_URL}/pages/login.php");
+            header("Location: ./pages/login.php");
     }
     //
     if(!$redirect) {

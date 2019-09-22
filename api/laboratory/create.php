@@ -40,7 +40,7 @@
                 "computers" => $computers,
                 "softwares" => array()
             ]);
-            header("Location: $BASE_URL/pages/home.php");
+            header("Location: ../../pages/home.php");
         }
     }
 ?>
