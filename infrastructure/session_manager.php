@@ -26,7 +26,7 @@
         }
         
         public function session_is_admin() {
-            return $this->session_is_authenticated() && isset($this->session_get_user()[IS_ADMIN]);
+            return $this->session_is_authenticated() && $this->session_get_user()[IS_ADMIN];
         }
     }
 ?>
