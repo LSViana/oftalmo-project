@@ -20,8 +20,6 @@
         }
 
         public function laboratories_list() {
-            return [];
-            //
             global $collection_laboratory;
             $laboratories = $this->database->db_list($collection_laboratory);
             $index = 0;
@@ -43,7 +41,6 @@
         }
 
         public function laboratories_update($id, $object) {
-            global $BASE_URL;
             global $collection_laboratory;
             $this->database->db_update($collection_laboratory, $id, $object);
         }
