@@ -177,10 +177,14 @@
                             <h3>
                                 Softwares por laboratório
                             </h3>
-                            <div class="border-radius-2 overflow-hidden">
-                                <img
-                                    src="../api/charts/software-by-laboratory.php"
-                                    alt="Gráfico de softwares por laboratório">
+                            <div class="border-radius-2 overflow-hidden flex flex-column justify-center flex-grow">
+                                <?php if(sizeof($laboratories) > 0) { ?>
+                                    <img
+                                        src="../api/charts/software-by-laboratory.php"
+                                        alt="Gráfico de softwares por laboratório">
+                                <?php } else { ?>
+                                    <p class="ma-3 font-weight-light">Nenhum laboratório encontrado...</p>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="flex flex-column align-center ma-2 pa-4 bg-dark border-radius-3">
@@ -188,9 +192,14 @@
                                 Computadores por laboratório
                             </h3>
                             <div class="border-radius-2 overflow-hidden">
-                                <img
-                                    src="../api/charts/computers-by-laboratory.php"
-                                    alt="Gráfico de softwares por laboratório">
+                                <?php if(sizeof($laboratories) > 0) { ?>
+                                    <img
+                                            src="../api/charts/computers-by-laboratory.php"
+                                            alt="Gráfico de computadores por laboratório">
+                                <?php } else { ?>
+                                    <p class="ma-3 font-weight-light">Nenhum laboratório encontrado...</p>
+                                <?php } ?>
+
                             </div>
                         </div>
                     </article>

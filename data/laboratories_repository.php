@@ -20,6 +20,8 @@
         }
 
         public function laboratories_list() {
+            return [];
+            //
             global $collection_laboratory;
             $laboratories = $this->database->db_list($collection_laboratory);
             $index = 0;

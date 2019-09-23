@@ -91,6 +91,7 @@
         .flex-nowrap { flex-wrap: nowrap; }
         .flex-row { flex-direction: row; }
         .flex-column { flex-direction: column; }
+        .flex-grow { flex: 1; }
         .justify-center { justify-content: center; }
         .justify-between { justify-content: space-between; }
         .justify-end { justify-content: end; }
