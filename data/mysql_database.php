@@ -7,6 +7,7 @@
 
     public function __construct() {
       $this->connection = mysqli_connect("localhost", "root", "");
+      mysqli_set_charset($this->connection, "utf8");
       // Verifying possible errors
       if(!$this->connection) {
         die("Database connection failed: " . mysqli_connect_error(0));

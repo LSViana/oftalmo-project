@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS SoftwareManager;
 
-CREATE DATABASE SoftwareManager;
+CREATE DATABASE SoftwareManager CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE SoftwareManager;
 
