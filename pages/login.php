@@ -29,7 +29,7 @@
                     <input type="email" name="email" id="email" value="lucas@gmail.com">
                 </p>
                 <p class="flex flex-column align-start my-2">
-                    <label for="password">Password</label>
+                    <label for="password">Senha</label>
                     <input type="password" name="password" id="password" value="Asdf1234">
                 </p>
                 <?php if($invalidCredentials) { ?>
