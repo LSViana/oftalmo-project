@@ -26,7 +26,7 @@ class UsersRepository{
         $users = $this->users_list();
         $authenticatedUsers = array_values(array_filter($users, function($item) use ($email, $password) {
             try {
-                if($item["email"] == $email && $item["password"] == $password) {
+                if(strtolower($item["email"]) == strtolower($email) && $item["password"] == $password) {
                     return true;        
                 }
             } catch(Exception $err) {
@@ -39,6 +39,11 @@ class UsersRepository{
         else {
             return null;
         }
+    }
+
+    function users_create($object){
+        global $collection_user;
+        $this->database->db_create($collection_user, $object);
     }
 }
 ?>

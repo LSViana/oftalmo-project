@@ -45,5 +45,52 @@ class UsersController
             return http_response_code(400);
         }
     }
+
+    public function register(){
+        if($this->requestData->isPost){
+            $name = $_POST["name"] ?? null;
+            $email = $_POST["email"] ?? null;
+            $password = $_POST["password"] ?? null;
+            $confirmPassword = $_POST["confirmPassword"] ?? null;
+            
+            if($email == null || $name == null || $password == null || $confirmPassword == null){
+                header("Location: ../../pages/register.php?invalidValues");
+                return;
+            }
+
+            if($password != $confirmPassword){
+                header("Location: ../../pages/register.php?passwordsDontMatch");
+                return;
+            }
+
+            $users = $this->usersRepository->users_list();
+
+            $alreadyExistsUsers = array_values(array_filter($users, function($item) use ($email) {
+                try {
+                    if(strtolower($item["email"]) == strtolower($email)) {
+                        return true;        
+                    }
+                } catch(Exception $err) {
+                    return false;
+                }
+            }));
+
+            if(sizeof($alreadyExistsUsers) > 0) {
+                header("Location: ../../pages/register.php?sameEmail");
+                return;
+            }
+
+            $this->usersRepository->users_create([
+                "name" => $name,
+                "email" => $email,
+                "password" => $password,
+                "is_admin" => false
+            ]);
+
+            header("Location: ../../pages/login.php");
+        } else {
+            return http_response_code(400);
+        }
+    }
 }
 ?>
