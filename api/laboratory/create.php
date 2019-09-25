@@ -4,7 +4,7 @@
     require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
     require_once __DIR__ . "/" . "../../infrastructure/session_manager.php";
     //
-    $sessionManager = new SessionManager();
+    $sessionManager = new SessionManager(); 
     $requestData = new RequestData();
     //
     if($requestData->isGet){
