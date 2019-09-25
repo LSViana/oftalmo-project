@@ -9,6 +9,7 @@
     if($pageAuthRedirect->redirect_if_authenticated()) {
         return;
     } else {
+        $invalidCredentials = isset($_GET["invalidCredentials"]);
 ?>
 <html>
     <head>
@@ -31,6 +32,9 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" value="Asdf1234">
                 </p>
+                <?php if($invalidCredentials) { ?>
+                    <p class="error mt-1">Credenciais inválidas</p>
+                <?php }?>
                 <section class="actions flex justify-end my-4">
                     <button class="primary">
                         Entrar

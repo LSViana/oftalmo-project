@@ -19,8 +19,17 @@ CREATE TABLE Laboratory (
   id CHAR(36) NOT NULL,
   name CHAR(64) NOT NULL,
   computers INT NOT NULL,
-  softwares VARCHAR(1100) NOT NULL, -- 1100 is a value to make sure no overflow or data truncation will happen
   PRIMARY KEY(id)
+);
+
+-- Creating softwares in laboratory table
+CREATE TABLE SoftwareInLaboratory (
+  id CHAR(36) NOT NULL,
+  laboratoryId CHAR(36) NOT NULL,
+  softwareId CHAR(36) NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY (laboratoryId) REFERENCES Laboratory(id) ON DELETE CASCADE,
+  FOREIGN KEY (softwareId) REFERENCES Software(id) ON DELETE CASCADE
 );
 
 -- Creating users table
