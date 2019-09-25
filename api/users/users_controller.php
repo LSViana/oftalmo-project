@@ -48,18 +48,30 @@ class UsersController
 
     public function register(){
         if($this->requestData->isPost){
-            $name = $_POST["name"] ?? null;
-            $email = $_POST["email"] ?? null;
-            $password = $_POST["password"] ?? null;
-            $confirmPassword = $_POST["confirmPassword"] ?? null;
-            
-            if($email == null || $name == null || $password == null || $confirmPassword == null){
-                header("Location: ../../pages/register.php?invalidValues");
-                return;
+            $name = $_POST["name"] ?? "";
+            $email = $_POST["email"] ?? "";
+            $password = $_POST["password"] ?? "";
+            $confirmPassword = $_POST["confirmPassword"] ?? "";
+            $errors = [];
+
+            if(strlen($name) < 5){
+                $errors["name"] = "O nome deve ter no mínimo 5 caracteres";
+            }
+
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $errors["email"] = "O email não é um e-mail válido";
+            };
+
+            if(strlen($password) < 8){
+                $errors["password"] = "A senha deve ter no mínimo 8 caracteres";
             }
 
             if($password != $confirmPassword){
-                header("Location: ../../pages/register.php?passwordsDontMatch");
+                $errors["confirmPassword"] = "As senhas não conferem";
+            }
+
+            if(sizeof($errors) > 0) {
+                header("Location: ../../pages/register.php?errors=" . json_encode($errors) . "");
                 return;
             }
 
@@ -76,7 +88,8 @@ class UsersController
             }));
 
             if(sizeof($alreadyExistsUsers) > 0) {
-                header("Location: ../../pages/register.php?sameEmail");
+                $errors["email"] = "Um usuário com o mesmo email já existe";
+                header("Location: ../../pages/register.php?errors=" . json_encode($errors) . "");
                 return;
             }
 
