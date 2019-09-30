@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
     require_once __DIR__ . "/" . "../components/manager.php";
     require_once __DIR__ . "/" . "../infrastructure/scaffold_style.php";
@@ -180,15 +180,18 @@
                             <div class="border-radius-2 overflow-hidden flex flex-column justify-center flex-grow">
                                 <?php if(sizeof($laboratories) > 0) { ?>
                                     <form method="get" action="">
-                                    <select name="SelectedLab" class="select-css">
-                                        <?php
-                                    foreach($laboratories as $lab)
-                                        {
-                                            echo '<option  value="'. $lab["id"] . '">' . $lab["name"] . '</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                        <input type="submit" name="SubmitLab" value="enviar" class="action-button py-1 px-3 text-small submit-css" />
+										<div class="flex flex-column align-end">
+											<select name="SelectedLab" class="laboratory-select mb-2">
+												<option disabled selected>Selecione um laboratório</option>
+												<?php
+												foreach($laboratories as $lab): ?>
+													<option value="<?= $lab["id"] ?>"><?= $lab["name"] ?></option>
+												<?php
+												endforeach;
+												?>
+											</select>
+											<input type="submit" name="SubmitLab" value="enviar" class="action-button py-1 px-3 text-small" />
+										</div>
                                     </form>
                                     <?php if(isset($_GET["SelectedLab"])){ ?>
                                     <img

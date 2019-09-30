@@ -96,7 +96,8 @@
         .justify-between { justify-content: space-between; }
         .justify-end { justify-content: end; }
         .align-center { align-items: center; }
-        .align-start { align-items: start; }
+        .align-start { align-items: flex-start; }
+		.align-end { align-items: flex-end; }
         .align-stretch { align-items: stretch; }
         /* Text styles */
         .text-primary { color: var(--primary-color); }
@@ -226,7 +227,7 @@
         .border-radius-<?php echo $i ?> {
             border-radius: <?php echo $i * 2 ?>px;
         }
-        .select-css {
+        .laboratory-select {
             display: inline-block;
             font-size: 16px;
             font-family: sans-serif;
@@ -237,7 +238,6 @@
             width: 100%;
             max-width: 100%;
             box-sizing: border-box;
-            margin: 0;
             border: 1px solid #aaa;
             box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
             border-radius: .5em;
@@ -245,40 +245,29 @@
             -webkit-appearance: none;
             appearance: none;
             background-color: transparent;
-            margin-bottom: 2px;
-
         }
-        .select-css::-ms-expand {
+        .laboratory-select::-ms-expand {
             display: none;
         }
-        .select-css:hover {
+        .laboratory-select:hover {
             border-color: #646464;
         }
-        .select-css:focus {
+        .laboratory-select:focus {
             border-color: #aaa;
             box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
             box-shadow: 0 0 0 3px -moz-mac-focusring;
             color: white;
             outline: none;
         }
-        .select-css option {
+        .laboratory-select option {
             font-weight:normal;
             background-color: #323232;
             color: white;
         }
-        .select-css:active, link
+        .laboratory-select:active, link
         {
             color: white;
             background-color: transparent;
-        }
-
-
-        .submit-css {
-            float: right;
-        }
-
-        .black-area{
-            color: black;
         }
         <?php } ?>
     </style><?php
