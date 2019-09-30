@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/" . "../../jpgraph/jpgraph.php";
 require_once __DIR__ . "/" . "../../jpgraph/jpgraph_bar.php";
+require_once __DIR__ . "/" . "../../jpgraph/jpgraph_pie.php";
 require_once __DIR__ . "/" . "../../data/laboratories_repository.php";
+require_once __DIR__ . "/" . "../../data/softwares_repository.php";
 
 
 class ChartsController {
@@ -10,6 +12,7 @@ class ChartsController {
 
     public function __construct() {
         $this->laboratoriesRepository = new LaboratoriesRepository();
+        $this->softwaresRepository = new SoftwaresRepository();
     }
 
     public function computersByLaboratory() {
@@ -67,6 +70,61 @@ class ChartsController {
         $softwareByLaboratoryPlot->SetFillColor(PRIMARY_COLOR);
         
         // Display the graph
+        $graph->Stroke();
+    }
+
+    public function colorsBySoftwareByLaboratory() {
+
+        $laboratories = $this->laboratoriesRepository->laboratories_list();
+        $laboratory = null;
+        foreach($laboratories as $item)
+        {
+            if($item["id"] == $_GET["id"])
+            {
+                $laboratory = $item;
+            }
+        }
+        $softwares = array();
+        $colors = array();
+        $colorsCount = array();
+        $softwareNames = array();
+        foreach ($laboratory["softwares"] as $software)
+        {
+            $temp = $this->softwaresRepository->softwares_read($software);
+            array_push($softwares, $temp);
+            array_push($colors, $temp["color"]);
+            array_push($softwareNames, $temp["name"] . ' (%.1f%%)');
+        }
+
+        foreach ($colors as $color) {
+            $count = 0;
+            foreach ($softwares as $software)
+            {
+                if($software["color"] == $color)
+                {
+                    $count += 1;
+                }
+            }
+            array_push($colorsCount, $count);
+        }
+
+        $graph = new PieGraph(600,300);
+
+        $p1 = new PiePlot($colorsCount);
+        $graph->title->Set($laboratory["name"]);
+        $graph->title->SetColor('white');
+        $graph->Add($p1);
+        $p1->SetSize(0.35);
+        $p1->ShowBorder();
+        $p1->SetColor('black');
+        $p1->value->SetColor('white');
+        $p1->SetSliceColors($colors);
+        $p1->SetLabels($softwareNames);
+        $p1->SetLabelPos(1);
+
+        $graph->SetMarginColor(DARK_COLOR, DARK_COLOR);
+        $graph->SetColor(DARK_COLOR);
+        $graph->SetFrame(true, DARK_COLOR, 1);
         $graph->Stroke();
     }
 }

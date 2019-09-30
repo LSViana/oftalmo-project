@@ -173,6 +173,35 @@
                 <div class="flex flex-column">
                     <h2 class="ml-5">Gráficos</h2>
                     <article class="charts-lists flex flex-row flex-wrap justify-center ma-3">
+                    <div class="flex flex-column align-center ma-2 pa-4 bg-dark border-radius-3">
+                            <h3>
+                                Softwares por laboratório
+                            </h3>
+                            <div class="border-radius-2 overflow-hidden flex flex-column justify-center flex-grow">
+                                <?php if(sizeof($laboratories) > 0) { ?>
+                                    <form method="get" action="">
+                                    <select name="SelectedLab" class="select-css">
+                                        <?php
+                                    foreach($laboratories as $lab)
+                                        {
+                                            echo '<option  value="'. $lab["id"] . '">' . $lab["name"] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                        <input type="submit" name="SubmitLab" value="enviar" class="action-button py-1 px-3 text-small submit-css" />
+                                    </form>
+                                    <?php if(isset($_GET["SelectedLab"])){ ?>
+                                    <img
+                                        src="<?php echo '../api/charts/colors-by-software-by-laboratory.php?id=' . $_GET["SelectedLab"]?>"
+                                        alt="Gráfico de softwares por laboratório">
+                                    <?php } else {?>
+                                    <p class="ma-3 font-weight-light">Escolha um laboratório...</p>
+                                    <?php } ?>
+                                <?php } else { ?>
+                                    <p class="ma-3 font-weight-light">Nenhum laboratório encontrado...</p>
+                                <?php } ?>
+                            </div>
+                        </div>
                         <div class="flex flex-column align-center ma-2 pa-4 bg-dark border-radius-3">
                             <h3>
                                 Softwares por laboratório
@@ -199,7 +228,6 @@
                                 <?php } else { ?>
                                     <p class="ma-3 font-weight-light">Nenhum laboratório encontrado...</p>
                                 <?php } ?>
-
                             </div>
                         </div>
                     </article>

@@ -226,6 +226,60 @@
         .border-radius-<?php echo $i ?> {
             border-radius: <?php echo $i * 2 ?>px;
         }
+        .select-css {
+            display: inline-block;
+            font-size: 16px;
+            font-family: sans-serif;
+            font-weight: 700;
+            color: white;
+            line-height: 1.3;
+            padding: .6em 1.4em .5em .8em;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            border: 1px solid #aaa;
+            box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+            border-radius: .5em;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            margin-bottom: 2px;
+
+        }
+        .select-css::-ms-expand {
+            display: none;
+        }
+        .select-css:hover {
+            border-color: #646464;
+        }
+        .select-css:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+            box-shadow: 0 0 0 3px -moz-mac-focusring;
+            color: white;
+            outline: none;
+        }
+        .select-css option {
+            font-weight:normal;
+            background-color: #323232;
+            color: white;
+        }
+        .select-css:active, link
+        {
+            color: white;
+            background-color: transparent;
+        }
+
+
+        .submit-css {
+            float: right;
+        }
+
+        .black-area{
+            color: black;
+        }
         <?php } ?>
     </style><?php
     }
