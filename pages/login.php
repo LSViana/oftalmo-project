@@ -9,6 +9,7 @@
     if($pageAuthRedirect->redirect_if_authenticated()) {
         return;
     } else {
+        $invalidCredentials = isset($_GET["invalidCredentials"]);
 ?>
 <html>
     <head>
@@ -28,9 +29,12 @@
                     <input type="email" name="email" id="email" value="lucas@gmail.com">
                 </p>
                 <p class="flex flex-column align-start my-2">
-                    <label for="password">Password</label>
+                    <label for="password">Senha</label>
                     <input type="password" name="password" id="password" value="Asdf1234">
                 </p>
+                <?php if($invalidCredentials) { ?>
+                    <p class="error mt-1">Credenciais inválidas</p>
+                <?php }?>
                 <section class="actions flex justify-end my-4">
                     <button class="primary">
                         Entrar

@@ -45,5 +45,65 @@ class UsersController
             return http_response_code(400);
         }
     }
+
+    public function register(){
+        if($this->requestData->isPost){
+            $name = $_POST["name"] ?? "";
+            $email = $_POST["email"] ?? "";
+            $password = $_POST["password"] ?? "";
+            $confirmPassword = $_POST["confirmPassword"] ?? "";
+            $errors = [];
+
+            if(strlen($name) < 5){
+                $errors["name"] = "O nome deve ter no mínimo 5 caracteres";
+            }
+
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $errors["email"] = "O email não é um e-mail válido";
+            };
+
+            if(strlen($password) < 8){
+                $errors["password"] = "A senha deve ter no mínimo 8 caracteres";
+            }
+
+            if($password != $confirmPassword){
+                $errors["confirmPassword"] = "As senhas não conferem";
+            }
+
+            if(sizeof($errors) > 0) {
+                header("Location: ../../pages/register.php?errors=" . json_encode($errors) . "");
+                return;
+            }
+
+            $users = $this->usersRepository->users_list();
+
+            $alreadyExistsUsers = array_values(array_filter($users, function($item) use ($email) {
+                try {
+                    if(strtolower($item["email"]) == strtolower($email)) {
+                        return true;        
+                    }
+                } catch(Exception $err) {
+                    return false;
+                }
+            }));
+
+            if(sizeof($alreadyExistsUsers) > 0) {
+                $errors["email"] = "Um usuário com o mesmo email já existe";
+                header("Location: ../../pages/register.php?errors=" . json_encode($errors) . "");
+                return;
+            }
+
+            $this->usersRepository->users_create([
+                "name" => $name,
+                "email" => $email,
+                "password" => $password,
+                "is_admin" => false
+            ]);
+
+            header("Location: ../../pages/login.php");
+        } else {
+            return http_response_code(400);
+        }
+    }
 }
 ?>
