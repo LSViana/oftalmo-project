@@ -16,12 +16,7 @@ class ChartsController {
     }
 
     public function computersByLaboratory() {
-        // Fetching values from storage
-        $laboratories = $this->laboratoriesRepository->laboratories_list();
-
-        $computersAmounts = array_map(function ($item) {
-            return $item["computers"];
-        }, $laboratories);
+        list($laboratories, $computersAmounts) = $this->computersByLaboratoryData();
 
         // Create the graph. These two calls are always required
         $graph = new Graph(600,300,'auto');
@@ -45,13 +40,8 @@ class ChartsController {
     }
 
     public function softwareByLaboratory() {
-        // Fetching values from storage
-        $laboratories = $this->laboratoriesRepository->laboratories_list();
+        list($laboratories, $softwareAmounts) = $this->softwaresByLaboratoryData();
 
-        $softwareAmounts = array_map(function ($item) {
-            return sizeof($item["softwares"]);
-        }, $laboratories);
-        
         // Create the graph. These two calls are always required
         $graph = new Graph(600,300,'auto');
         $graph->SetScale("textlin");
@@ -68,45 +58,14 @@ class ChartsController {
         $graph->SetFrame(true, DARK_COLOR, 1);
         $softwareByLaboratoryPlot->SetColor(PRIMARY_COLOR);
         $softwareByLaboratoryPlot->SetFillColor(PRIMARY_COLOR);
-        
+
         // Display the graph
         $graph->Stroke();
     }
 
     public function colorsBySoftwareByLaboratory() {
 
-        $laboratories = $this->laboratoriesRepository->laboratories_list();
-        $laboratory = null;
-        foreach($laboratories as $item)
-        {
-            if($item["id"] == $_GET["id"])
-            {
-                $laboratory = $item;
-            }
-        }
-        $softwares = array();
-        $colors = array();
-        $colorsCount = array();
-        $softwareNames = array();
-        foreach ($laboratory["softwares"] as $software)
-        {
-            $temp = $this->softwaresRepository->softwares_read($software);
-            array_push($softwares, $temp);
-            array_push($colors, $temp["color"]);
-            array_push($softwareNames, $temp["name"] . ' (%.1f%%)');
-        }
-
-        foreach ($colors as $color) {
-            $count = 0;
-            foreach ($softwares as $software)
-            {
-                if($software["color"] == $color)
-                {
-                    $count += 1;
-                }
-            }
-            array_push($colorsCount, $count);
-        }
+        list($laboratory, $colors, $colorsCount, $softwareNames, $softwares) = $this->colorsBySoftwareByLaboratoryData();
 
         $graph = new PieGraph(600,300);
 
@@ -126,6 +85,73 @@ class ChartsController {
         $graph->SetColor(DARK_COLOR);
         $graph->SetFrame(true, DARK_COLOR, 1);
         $graph->Stroke();
+    }
+
+    /**
+     * @return array
+     */
+    public function computersByLaboratoryData(): array
+    {
+        // Fetching values from storage
+        $laboratories = $this->laboratoriesRepository->laboratories_list();
+
+        $computersAmounts = array_map(function ($item) {
+            return $item["computers"];
+        }, $laboratories);
+
+        return [
+            $laboratories,
+            $computersAmounts
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function softwaresByLaboratoryData(): array
+    {
+// Fetching values from storage
+        $laboratories = $this->laboratoriesRepository->laboratories_list();
+
+        $softwareAmounts = array_map(function ($item) {
+            return sizeof($item["softwares"]);
+        }, $laboratories);
+        return array($laboratories, $softwareAmounts);
+    }
+
+    /**
+     * @return array
+     */
+    public function colorsBySoftwareByLaboratoryData(): array
+    {
+        $laboratories = $this->laboratoriesRepository->laboratories_list();
+        $laboratory = null;
+        foreach ($laboratories as $item) {
+            if ($item["id"] == $_GET["id"]) {
+                $laboratory = $item;
+            }
+        }
+        $softwares = array();
+        $colors = array();
+        $colorsCount = array();
+        $softwareNames = array();
+        foreach ($laboratory["softwares"] as $software) {
+            $temp = $this->softwaresRepository->softwares_read($software);
+            array_push($softwares, $temp);
+            array_push($colors, $temp["color"]);
+            array_push($softwareNames, $temp["name"] . ' (%.1f%%)');
+        }
+
+        foreach ($colors as $color) {
+            $count = 0;
+            foreach ($softwares as $software) {
+                if ($software["color"] == $color) {
+                    $count += 1;
+                }
+            }
+            array_push($colorsCount, $count);
+        }
+        return array($laboratory, $colors, $colorsCount, $softwareNames, $softwares);
     }
 }
 ?>
