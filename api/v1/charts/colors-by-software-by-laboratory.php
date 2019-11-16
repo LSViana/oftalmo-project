@@ -23,5 +23,5 @@ if($requestData->isGet) {
     $responseManager = new ResponseManager();
     $responseManager->returnAsJson($laboratory);
 } else {
-    http_send_status(405);
+    http_response_code(405);
 }
