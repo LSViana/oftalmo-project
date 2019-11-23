@@ -1,10 +1,10 @@
 USE SoftwareManager;
 
 -- Wipe database
-DELETE FROM Software WHERE true;
-DELETE FROM Laboratory WHERE true;
-DELETE FROM SoftwareInLaboratory WHERE true;
-DELETE FROM User WHERE true;
+DELETE FROM Software WHERE id != '';
+DELETE FROM Laboratory WHERE id != '';
+DELETE FROM SoftwareInLaboratory WHERE id != '';
+DELETE FROM User WHERE id != '';
 
 -- Insert users
 INSERT INTO `User` (`id`, `name`, `email`, `password`, `is_admin`) VALUES
