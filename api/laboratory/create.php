@@ -37,8 +37,7 @@
             $laboratoriesRepository = new LaboratoriesRepository();
             $laboratoriesRepository->laboratories_create([
                 "name" => $name,
-                "computers" => $computers,
-                "softwares" => array()
+                "computers" => $computers
             ]);
             header("Location: ../../pages/home.php");
         }
