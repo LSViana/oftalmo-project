@@ -37,6 +37,7 @@ class ChartsController {
 
         // Display the graph
         $graph->Stroke();
+
     }
 
     public function softwareByLaboratory() {
