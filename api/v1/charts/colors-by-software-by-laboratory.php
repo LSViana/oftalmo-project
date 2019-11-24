@@ -5,6 +5,14 @@ require_once __DIR__ . "/" . "../../../infrastructure/response_manager.php";
 
 $requestData = new RequestData();
 if($requestData->isGet) {
+    $responseManager = new ResponseManager();
+    if(!isset($_REQUEST["id"])) {
+        http_response_code(400);
+        $responseManager->returnAsJson([
+            'error' => "O parâmetro 'id' é obrigatório"
+        ]);
+        return;
+    }
     $controller = new ChartsController();
     list($laboratory, $colors, $colorsCount, $softwareNames, $softwares) = $controller->colorsBySoftwareByLaboratoryData();
     // Processing results
@@ -20,7 +28,6 @@ if($requestData->isGet) {
     }, $laboratory["softwares"]));
     // Returning as JSON
     $laboratory["softwares"] = $softwaresWithColors;
-    $responseManager = new ResponseManager();
     $responseManager->returnAsJson($laboratory);
 } else {
     http_response_code(405);

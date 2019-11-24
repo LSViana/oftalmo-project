@@ -46,8 +46,10 @@
             $softwaresInLaboratory = $this->database->db_list($collection_softwares_in_laboratory);
             $softwareInLaboratory = array_values(array_filter($softwaresInLaboratory, function($item) use($laboratoryId, $softwareId) {
                return $item["laboratoryId"] == $laboratoryId && $item["softwareId"] == $softwareId;
-            }))[0];
-            $this->database->db_delete($collection_softwares_in_laboratory, $softwareInLaboratory["id"]);
+            }));
+            if(sizeof($softwareInLaboratory) > 0) {
+                $this->database->db_delete($collection_softwares_in_laboratory, $softwareInLaboratory[0]["id"]);
+            }
         }
     }
 ?>

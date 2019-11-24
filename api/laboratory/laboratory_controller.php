@@ -52,6 +52,11 @@ class LaboratoryController {
         }
     }
 
+    public function list() {
+        $laboratories = $this->laboratoriesRepository->laboratories_list();
+        return $laboratories;
+    }
+
     public function createByApi()
     {
         if($this->requestData->isGet){
@@ -81,7 +86,6 @@ class LaboratoryController {
                     "name" => $name,
                     "computers" => $computers
                 ]);
-                return;
             }
         }
     }
@@ -119,9 +123,8 @@ class LaboratoryController {
             return;
         }
         $errors = [];
-        $data = json_decode(file_get_contents('php://input'), true);
-        $laboratoryId = $data["laboratory_id"] ?? null;
-        $softwareId = $data["software_id"] ?? null;
+        $laboratoryId = $_GET["laboratory_id"] ?? null;
+        $softwareId = $_GET["software_id"] ?? null;
         if($laboratoryId == null)
         {
             $errors["laboratoryId"] = "O laboratoryId não pode ser nulo";
