@@ -3,5 +3,5 @@
     //
     $laboratoryController = new LaboratoryController();
     $laboratoryController->create();
-
 ?>
+
