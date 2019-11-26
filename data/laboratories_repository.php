@@ -3,7 +3,7 @@
     require_once __DIR__ . "/" . "./mysql_database.php";
     require_once __DIR__ . "/" . "./softwares_in_laboratory_repository.php";
 
-    $collection_laboratories = "laboratory";
+    $collection_laboratories = "Laboratory";
     //
     class LaboratoriesRepository {
         private $database;

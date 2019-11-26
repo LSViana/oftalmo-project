@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/" . "../infrastructure/constants.php";
     require_once __DIR__ . "/" . "./mysql_database.php";
-    $collection_user = "user";
+    $collection_user = "User";
 
 class UsersRepository{
     private $database;
